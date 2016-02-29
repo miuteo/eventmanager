@@ -1,0 +1,24 @@
+{
+    "eventsmanagerApp": {
+        "location" : {
+            "home": {
+                "title": "Locations",
+                "createLabel": "Crează o nouă Location",
+                "createOrEditLabel": "Crează sau editează o Location",
+                "search": "Search for Location"
+            },
+            "created": "O nouă Location este creată cu identificatorul {{ param }}",
+            "updated": "O Location este editată cu identificatorul {{ param }}",
+            "deleted": "O Location este stearsă cu identificatorul {{ param }}",
+            "delete": {
+                "question": "Ești sigur că dorești să stergi Location {{ id }}?"
+            },
+            "detail": {
+                "title": "Location"
+            },
+            "name": "Name",
+            "adress": "Adress",
+            "event": "Event"
+        }
+    }
+}
