@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="eventsmanagerApp.event.detail.title">Event</span> {{event.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.date">Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.date | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.details">Details</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.details}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.dateCreated">DateCreated</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.dateCreated | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.lastUpdated">LastUpdated</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{event.lastUpdated | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="eventsmanagerApp.event.createdBy">createdBy</span>
+                </td>
+                <td>
+                    {{event.createdBy.login}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
