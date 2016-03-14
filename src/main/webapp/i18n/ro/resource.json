@@ -1,0 +1,24 @@
+{
+    "eventsmanagerApp": {
+        "resource" : {
+            "home": {
+                "title": "Resources",
+                "createLabel": "Crează o nouă Resource",
+                "createOrEditLabel": "Crează sau editează o Resource",
+                "search": "Search for Resource"
+            },
+            "created": "O nouă Resource este creată cu identificatorul {{ param }}",
+            "updated": "O Resource este editată cu identificatorul {{ param }}",
+            "deleted": "O Resource este stearsă cu identificatorul {{ param }}",
+            "delete": {
+                "question": "Ești sigur că dorești să stergi Resource {{ id }}?"
+            },
+            "detail": {
+                "title": "Resource"
+            },
+            "name": "Name",
+            "dateCreated": "DateCreated",
+            "lastUpdated": "LastUpdated"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "eventsmanagerApp": {
+        "invitation" : {
+            "home": {
+                "title": "Invitations",
+                "createLabel": "Crează o nouă Invitation",
+                "createOrEditLabel": "Crează sau editează o Invitation",
+                "search": "Search for Invitation"
+            },
+            "created": "O nouă Invitation este creată cu identificatorul {{ param }}",
+            "updated": "O Invitation este editată cu identificatorul {{ param }}",
+            "deleted": "O Invitation este stearsă cu identificatorul {{ param }}",
+            "delete": {
+                "question": "Ești sigur că dorești să stergi Invitation {{ id }}?"
+            },
+            "detail": {
+                "title": "Invitation"
+            },
+            "answer": "Answer",
+            "message": "Message",
+            "dateCreated": "DateCreated",
+            "lastUpdated": "LastUpdated",
+            "event": "Event",
+            "user": "User"
+        }
+    }
+}
