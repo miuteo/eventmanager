@@ -63,10 +63,17 @@
         </div>
         <div class="form-group">
             <label translate="eventsmanagerApp.event.invitations" for="field_invitations">invitations</label>
-            <select class="selectpicker" data-live-search="true">
-                <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+            <script src="bower_components/bootstrap-select2/jquery.min.js"></script>
+            <script src="bower_components/bootstrap-select2/chosen.jquery.js"></script>
+            <script>
+                $(function() {
+                    $('.chosen-select').chosen();
+                    $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+                });
+            </script>
+            <select class="form-control chosen-select" data-placeholder="Your Guest" id="field_invitations"  name="invitations" ng-model="event.invitations" multiple tabindex="4" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+                <!--<option value="Zimbabwe">Zimbabwe</option>-->
             </select>
         </div>
     </div>
