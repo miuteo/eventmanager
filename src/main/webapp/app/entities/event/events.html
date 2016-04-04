@@ -23,6 +23,7 @@
                     <th><span translate="eventmanagerApp.event.date">Date</span></th>
                     <th><span translate="eventmanagerApp.event.location">Location</span></th>
                     <th><span translate="eventmanagerApp.event.details">Details</span></th>
+                    <th><span translate="eventmanagerApp.event.createdBy">createdBy</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                     <td>{{event.date | date:'medium'}}</td>
                     <td>{{event.location}}</td>
                     <td>{{event.details}}</td>
+                    <td>
+                        {{event.createdBy.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

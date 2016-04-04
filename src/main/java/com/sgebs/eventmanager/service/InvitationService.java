@@ -18,13 +18,13 @@ import java.util.List;
 public class InvitationService {
 
     private final Logger log = LoggerFactory.getLogger(InvitationService.class);
-    
+
     @Inject
     private InvitationRepository invitationRepository;
-    
+
     /**
      * Save a invitation.
-     * 
+     *
      * @param invitation the entity to save
      * @return the persisted entity
      */
@@ -36,13 +36,25 @@ public class InvitationService {
 
     /**
      *  Get all the invitations.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<Invitation> findAll() {
         log.debug("Request to get all Invitations");
         List<Invitation> result = invitationRepository.findAll();
+        return result;
+    }
+
+    /**
+     *  Get all the invitations.
+     *
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public List<Invitation> findForUserLogin(String login) {
+        log.debug("Request to get all Invitations for user [{}]", login);
+        List<Invitation> result = invitationRepository.findForUserLogin(login);
         return result;
     }
 
@@ -52,7 +64,7 @@ public class InvitationService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Invitation findOne(Long id) {
         log.debug("Request to get Invitation : {}", id);
         Invitation invitation = invitationRepository.findOne(id);
@@ -61,7 +73,7 @@ public class InvitationService {
 
     /**
      *  Delete the  invitation by id.
-     *  
+     *
      *  @param id the id of the entity
      */
     public void delete(Long id) {

@@ -2,6 +2,7 @@ package com.sgebs.eventmanager.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.sgebs.eventmanager.domain.Event;
+import com.sgebs.eventmanager.domain.User;
 import com.sgebs.eventmanager.service.EventService;
 import com.sgebs.eventmanager.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -27,10 +30,10 @@ import java.util.Optional;
 public class EventResource {
 
     private final Logger log = LoggerFactory.getLogger(EventResource.class);
-        
+
     @Inject
     private EventService eventService;
-    
+
     /**
      * POST  /events : Create a new event.
      *
@@ -87,8 +90,9 @@ public class EventResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Event> getAllEvents() {
-        log.debug("REST request to get all Events");
-        return eventService.findAll();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        log.debug("REST request to get all Events for current logged in user [{}], ", auth.getName());
+        return eventService.findByCreatedByLogin(auth.getName());
     }
 
     /**

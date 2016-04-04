@@ -19,7 +19,8 @@
             "date": "Date",
             "accept": "Accept",
             "event": "Event",
-            "user": "User"
+            "user": "User",
+            "createdBy": "CreatedBy"
         }
     }
 }

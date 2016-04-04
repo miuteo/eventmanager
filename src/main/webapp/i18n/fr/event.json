@@ -20,7 +20,8 @@
             "date": "Date",
             "location": "Location",
             "details": "Details",
-            "invitation": "Invitation"
+            "invitation": "Invitation",
+            "createdBy": "CreatedBy"
         }
     }
 }

@@ -32,6 +32,10 @@ public class Invitation implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User createdBy;
+
     public Long getId() {
         return id;
     }
@@ -70,6 +74,14 @@ public class Invitation implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User user) {
+        this.createdBy = user;
     }
 
     @Override

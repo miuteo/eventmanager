@@ -5,6 +5,13 @@
             "otherEntityName": "invitation",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "event"
+        },
+        {
+            "relationshipName": "createdBy",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
         }
     ],
     "fields": [

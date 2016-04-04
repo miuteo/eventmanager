@@ -33,6 +33,9 @@
             <column name="user_id" type="bigint">
                 <constraints unique="true"/>
             </column>
+            <column name="created_by_id" type="bigint">
+                <constraints unique="true"/>
+            </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="invitation" columnName="date" columnDataType="datetime"/>
@@ -46,6 +49,12 @@
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="invitation"
                                  constraintName="fk_invitation_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="invitation"
+                                 constraintName="fk_invitation_createdby_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 

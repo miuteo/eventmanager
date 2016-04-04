@@ -12,6 +12,13 @@
             "relationshipType": "one-to-one",
             "otherEntityField": "login",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "createdBy",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
         }
     ],
     "fields": [

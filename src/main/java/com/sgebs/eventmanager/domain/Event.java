@@ -42,6 +42,10 @@ public class Event implements Serializable {
     @JsonIgnore
     private Set<Invitation> invitations = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User createdBy;
+
     public Long getId() {
         return id;
     }
@@ -88,6 +92,14 @@ public class Event implements Serializable {
 
     public void setInvitations(Set<Invitation> invitations) {
         this.invitations = invitations;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User user) {
+        this.createdBy = user;
     }
 
     @Override
