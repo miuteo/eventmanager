@@ -1,0 +1,42 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "invitation",
+            "otherEntityName": "invitation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "event"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160404144701",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "event",
+    "pagination": "no"
+}

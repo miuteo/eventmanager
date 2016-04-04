@@ -1,0 +1,26 @@
+{
+    "eventmanagerApp": {
+        "event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "Crează o nouă Event",
+                "createOrEditLabel": "Crează sau editează o Event",
+                "search": "Search for Event"
+            },
+            "created": "O nouă Event este creată cu identificatorul {{ param }}",
+            "updated": "O Event este editată cu identificatorul {{ param }}",
+            "deleted": "O Event este stearsă cu identificatorul {{ param }}",
+            "delete": {
+                "question": "Ești sigur că dorești să stergi Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "name": "Name",
+            "date": "Date",
+            "location": "Location",
+            "details": "Details",
+            "invitation": "Invitation"
+        }
+    }
+}

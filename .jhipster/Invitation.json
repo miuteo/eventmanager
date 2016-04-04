@@ -1,0 +1,32 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "event",
+            "otherEntityName": "event",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "accept",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20160404145055",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "invitation",
+    "pagination": "no"
+}
