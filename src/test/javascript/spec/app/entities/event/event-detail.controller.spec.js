@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Event Detail Controller', function() {
+    describe('Event Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockEvent, MockUser;
+        var MockEntity, MockEvent, MockInvitation, MockUser;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,6 +12,7 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockEvent = jasmine.createSpy('MockEvent');
+            MockInvitation = jasmine.createSpy('MockInvitation');
             MockUser = jasmine.createSpy('MockUser');
             
 
@@ -20,6 +21,7 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
                 'Event': MockEvent,
+                'Invitation': MockInvitation,
                 'User': MockUser
             };
             createController = function() {
@@ -30,7 +32,7 @@ describe('Controller Tests', function() {
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'eventsmanagerApp:eventUpdate';
+                var eventType = 'eventmanagerApp:eventUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

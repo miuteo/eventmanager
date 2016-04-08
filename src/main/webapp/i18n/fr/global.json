@@ -1,13 +1,12 @@
 {
     "global": {
-        "title": "eventsmanager",
+        "title": "Eventmanager",
         "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
         "menu": {
             "home": "Accueil",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
-                "resource": "Resource",
                 "event": "Event",
                 "invitation": "Invitation",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -23,7 +22,7 @@
             },
             "admin": {
                 "main": "Administration",
-                "user-management": "Gestion utilisateur",
+                "userManagement": "Gestion utilisateur",
                 "tracker": "Suivi des utilisateurs",
                 "metrics": "Métriques",
                 "health": "Diagnostics",
@@ -48,8 +47,8 @@
         },
         "messages": {
             "info": {
-                "authenticated": "Si vous voulez vous <a class=\"alert-link\" href=\"#/login\">connecter</a>, vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
-                "register": "Vous n'avez pas encore de compte ? <a class=\"alert-link\" href=\"#/register\">Créer un compte</a>"
+                "authenticated": "Si vous voulez vous <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">connecter</a>, vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
+                "register": "Vous n'avez pas encore de compte ? <a class=\"alert-link\" ui-sref=\"register\">Créer un compte</a>"
             },
             "error": {
                 "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux!"

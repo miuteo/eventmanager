@@ -1,10 +1,10 @@
 {
-    "eventsmanagerApp": {
+    "eventmanagerApp": {
         "event" : {
             "home": {
                 "title": "Events",
                 "createLabel": "Create a new Event",
-                "createOrEditLabel": "Create or edit an Event",
+                "createOrEditLabel": "Create or edit a Event",
                 "search": "Search for Event"
             },
             "created": "A new Event is created with identifier {{ param }}",
@@ -18,11 +18,10 @@
             },
             "name": "Name",
             "date": "Date",
+            "location": "Location",
             "details": "Details",
-            "dateCreated": "Date Created",
-            "lastUpdated": "Last Updated",
-            "createdBy": "Created By",
-            "invitations": "Invite Users"
+            "invitation": "Invitation",
+            "createdBy": "CreatedBy"
         }
     }
 }

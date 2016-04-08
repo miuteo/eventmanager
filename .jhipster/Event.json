@@ -1,16 +1,21 @@
 {
     "relationships": [
         {
-            "relationshipId": 1,
+            "relationshipName": "invitation",
+            "otherEntityName": "invitation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "event"
+        },
+        {
             "relationshipName": "createdBy",
             "otherEntityName": "user",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "login"
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
         }
     ],
     "fields": [
         {
-            "fieldId": 1,
             "fieldName": "name",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -18,7 +23,6 @@
             ]
         },
         {
-            "fieldId": 2,
             "fieldName": "date",
             "fieldType": "ZonedDateTime",
             "fieldValidateRules": [
@@ -26,32 +30,20 @@
             ]
         },
         {
-            "fieldId": 3,
-            "fieldName": "details",
+            "fieldName": "location",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldId": 4,
-            "fieldName": "dateCreated",
-            "fieldType": "ZonedDateTime",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "lastUpdated",
-            "fieldType": "ZonedDateTime",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldName": "details",
+            "fieldType": "String"
         }
     ],
-    "changelogDate": "20160314171830",
+    "changelogDate": "20160404144701",
     "dto": "no",
-    "service": "no",
-    "pagination": "infinite-scroll"
+    "service": "serviceClass",
+    "entityTableName": "event",
+    "pagination": "no"
 }

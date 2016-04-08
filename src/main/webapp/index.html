@@ -1,445 +1,189 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>eventsmanager</title>
-        <meta name="description" content="">
-        <meta name="google" value="notranslate">
-        <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css assets/styles/vendor.css -->
-        <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css assets/styles/main.css -->
-        <link rel="stylesheet" href="assets/styles/main.css">
-        <link rel="stylesheet" href="bower_components/bootstrap-select2/bootstrap.css" />
-        <style>
-            body { margin-bottom: 144px; }
-            header { margin: 72px 0 36px; }
-            header h1 { font-size: 54px; }
-        </style>
-        <!-- endbuild -->
-
-    </head>
-    <body ng-app="eventsmanagerApp">
-        <!--[if lt IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
-        <div ui-view="navbar" ng-cloak=""></div>
-        <div class="container">
-            <div class="well" ui-view="content"></div>
-
-            <div class="footer">
-                <p translate="footer">This is your footer</p>
-            </div>
-        </div>
-
-        <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>-->
-
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-aria/angular-aria.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
-        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-translate/angular-translate.js"></script>
-        <script src="bower_components/messageformat/messageformat.js"></script>
-        <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
-        <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
-        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/json3/lib/json3.js"></script>
-        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-        <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-
-        <!-- endbower -->
-        <!-- endbuild -->
-
-
-    <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
-    <script src="scripts/app/app.js"></script>
-    <script src="scripts/app/app.constants.js"></script>
-    <script src="scripts/components/auth/auth.service.js"></script>
-    <script src="scripts/components/auth/principal.service.js"></script>
-    <script src="scripts/components/auth/authority.directive.js"></script>
-    <script src="scripts/components/auth/services/account.service.js"></script>
-    <script src="scripts/components/auth/services/activate.service.js"></script>
-    <script src="scripts/components/auth/services/password.service.js"></script>
-    <script src="scripts/components/auth/services/register.service.js"></script>
-    <script src="scripts/components/form/form.directive.js"></script>
-    <script src="scripts/components/form/maxbytes.directive.js"></script>
-    <script src="scripts/components/form/minbytes.directive.js"></script>
-    <script src="scripts/components/form/uib-pager.config.js"></script>
-    <script src="scripts/components/form/uib-pagination.config.js"></script>
-    <script src="scripts/components/admin/audits.service.js"></script>
-    <script src="scripts/components/admin/logs.service.js"></script>
-    <script src="scripts/components/admin/configuration.service.js"></script>
-    <script src="scripts/components/admin/monitoring.service.js"></script>
-    <script src="scripts/components/interceptor/auth.interceptor.js"></script>
-    <script src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
-    <script src="scripts/components/interceptor/notification.interceptor.js"></script>
-    <script src="scripts/components/navbar/navbar.directive.js"></script>
-    <script src="scripts/components/navbar/navbar.controller.js"></script>
-    <script src="scripts/components/user/user.service.js"></script>
-    <script src="scripts/components/util/truncate.filter.js"></script>
-    <script src="scripts/components/util/base64.service.js"></script>
-    <script src="scripts/components/util/capitalize.filter.js"></script>
-    <script src="scripts/components/alert/alert.service.js"></script>
-    <script src="scripts/components/alert/alert.directive.js"></script>
-    <script src="scripts/components/util/parse-links.service.js"></script>
-    <script src="scripts/components/util/date-util.service.js"></script>
-    <script src="scripts/components/util/data-util.service.js"></script>
-    <script src="scripts/components/util/sort.directive.js"></script>
-    <script src="scripts/app/account/account.js"></script>
-    <script src="scripts/app/account/activate/activate.js"></script>
-    <script src="scripts/app/account/activate/activate.controller.js"></script>
-    <script src="scripts/app/account/login/login.js"></script>
-    <script src="scripts/app/account/login/login.controller.js"></script>
-    <script src="scripts/app/account/password/password.js"></script>
-    <script src="scripts/app/account/password/password.controller.js"></script>
-    <script src="scripts/app/account/password/password.directive.js"></script>
-    <script src="scripts/app/account/register/register.js"></script>
-    <script src="scripts/app/account/register/register.controller.js"></script>
-    <script src="scripts/app/account/settings/settings.js"></script>
-    <script src="scripts/app/account/settings/settings.controller.js"></script>
-    <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
-    <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
-    <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
-    <script src="scripts/app/account/reset/request/reset.request.js"></script>
-    <script src="scripts/app/admin/admin.js"></script>
-    <script src="scripts/app/admin/audits/audits.js"></script>
-    <script src="scripts/app/admin/audits/audits.controller.js"></script>
-    <script src="scripts/app/admin/configuration/configuration.js"></script>
-    <script src="scripts/app/admin/configuration/configuration.controller.js"></script>
-    <script src="scripts/app/admin/docs/docs.js"></script>
-    <script src="scripts/app/admin/health/health.js"></script>
-    <script src="scripts/app/admin/health/health.controller.js"></script>
-    <script src="scripts/app/admin/health/health.modal.controller.js"></script>
-    <script src="scripts/app/admin/logs/logs.js"></script>
-    <script src="scripts/app/admin/logs/logs.controller.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management.js"></script>
-    <script src="scripts/app/entities/entity.js"></script>
-    <script src="scripts/app/error/error.js"></script>
-    <script src="scripts/app/main/main.js"></script>
-    <script src="scripts/app/main/main.controller.js"></script>
-    <script src="bower_components/messageformat/locale/en.js"></script>
-    <script src="bower_components/messageformat/locale/fr.js"></script>
-    <script src="scripts/components/language/language.service.js"></script>
-    <script src="scripts/components/language/language.controller.js"></script>
-    <script src="scripts/components/auth/services/sessions.service.js"></script>
-    <script src="scripts/components/auth/provider/auth.session.service.js"></script>
-    <script src="scripts/app/account/sessions/sessions.js"></script>
-    <script src="scripts/app/account/sessions/sessions.controller.js"></script>
-    <script src="bower_components/messageformat/locale/ro.js"></script>
-    <script src="scripts/app/entities/resource/resource.js"></script>
-    <script src="scripts/app/entities/resource/resource.controller.js"></script>
-    <script src="scripts/app/entities/resource/resource-dialog.controller.js"></script>
-    <script src="scripts/app/entities/resource/resource-delete-dialog.controller.js"></script>
-    <script src="scripts/app/entities/resource/resource-detail.controller.js"></script>
-    <script src="scripts/components/entities/resource/resource.service.js"></script>
-    <script src="scripts/components/entities/resource/resource.search.service.js"></script>
-    <script src="scripts/app/entities/event/event.js"></script>
-    <script src="scripts/app/entities/event/event.controller.js"></script>
-    <script src="scripts/app/entities/event/event-dialog.controller.js"></script>
-    <script src="scripts/app/entities/event/event-delete-dialog.controller.js"></script>
-    <script src="scripts/app/entities/event/event-detail.controller.js"></script>
-    <script src="scripts/components/entities/event/event.service.js"></script>
-    <script src="scripts/components/entities/event/event.search.service.js"></script>
-    <script src="scripts/app/entities/invitation/invitation.js"></script>
-    <script src="scripts/app/entities/invitation/invitation.controller.js"></script>
-    <script src="scripts/app/entities/invitation/invitation-dialog.controller.js"></script>
-    <script src="scripts/app/entities/invitation/invitation-delete-dialog.controller.js"></script>
-    <script src="scripts/app/entities/invitation/invitation-detail.controller.js"></script>
-    <script src="scripts/components/entities/invitation/invitation.service.js"></script>
-    <script src="scripts/components/entities/invitation/invitation.search.service.js"></script>
-
-        <!--<script src="bower_components/bootstrap-select2/jquery.min.js"></script>-->
-        <!--<script src="bower_components/bootstrap-select2/chosen.jquery.js"></script>-->
-        <!--<script>-->
-            <!--$(function() {-->
-                <!--$('.chosen-select').chosen();-->
-                <!--$('.chosen-select-deselect').chosen({ allow_single_deselect: true });-->
-            <!--});-->
-        <!--</script>-->
-
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>eventmanager</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css content/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
     <!-- endbuild -->
-        <!--<select data-placeholder="Choose a Country" class="chosen-select" multiple tabindex="4">-->
-            <!--<option value=""></option>-->
-            <!--<option value="United States">United States</option>-->
-            <!--<option value="United Kingdom">United Kingdom</option>-->
-            <!--<option value="Afghanistan">Afghanistan</option>-->
-            <!--<option value="Albania">Albania</option>-->
-            <!--<option value="Algeria">Algeria</option>-->
-            <!--<option value="American Samoa">American Samoa</option>-->
-            <!--<option value="Andorra">Andorra</option>-->
-            <!--<option value="Angola">Angola</option>-->
-            <!--<option value="Anguilla">Anguilla</option>-->
-            <!--<option value="Antarctica">Antarctica</option>-->
-            <!--<option value="Antigua and Barbuda">Antigua and Barbuda</option>-->
-            <!--<option value="Argentina">Argentina</option>-->
-            <!--<option value="Armenia">Armenia</option>-->
-            <!--<option value="Aruba">Aruba</option>-->
-            <!--<option value="Australia">Australia</option>-->
-            <!--<option value="Austria">Austria</option>-->
-            <!--<option value="Azerbaijan">Azerbaijan</option>-->
-            <!--<option value="Bahamas">Bahamas</option>-->
-            <!--<option value="Bahrain">Bahrain</option>-->
-            <!--<option value="Bangladesh">Bangladesh</option>-->
-            <!--<option value="Barbados">Barbados</option>-->
-            <!--<option value="Belarus">Belarus</option>-->
-            <!--<option value="Belgium">Belgium</option>-->
-            <!--<option value="Belize">Belize</option>-->
-            <!--<option value="Benin">Benin</option>-->
-            <!--<option value="Bermuda">Bermuda</option>-->
-            <!--<option value="Bhutan">Bhutan</option>-->
-            <!--<option value="Bolivia">Bolivia</option>-->
-            <!--<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>-->
-            <!--<option value="Botswana">Botswana</option>-->
-            <!--<option value="Bouvet Island">Bouvet Island</option>-->
-            <!--<option value="Brazil">Brazil</option>-->
-            <!--<option value="British Indian Ocean Territory">British Indian Ocean Territory</option>-->
-            <!--<option value="Brunei Darussalam">Brunei Darussalam</option>-->
-            <!--<option value="Bulgaria">Bulgaria</option>-->
-            <!--<option value="Burkina Faso">Burkina Faso</option>-->
-            <!--<option value="Burundi">Burundi</option>-->
-            <!--<option value="Cambodia">Cambodia</option>-->
-            <!--<option value="Cameroon">Cameroon</option>-->
-            <!--<option value="Canada">Canada</option>-->
-            <!--<option value="Cape Verde">Cape Verde</option>-->
-            <!--<option value="Cayman Islands">Cayman Islands</option>-->
-            <!--<option value="Central African Republic">Central African Republic</option>-->
-            <!--<option value="Chad">Chad</option>-->
-            <!--<option value="Chile">Chile</option>-->
-            <!--<option value="China">China</option>-->
-            <!--<option value="Christmas Island">Christmas Island</option>-->
-            <!--<option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>-->
-            <!--<option value="Colombia">Colombia</option>-->
-            <!--<option value="Comoros">Comoros</option>-->
-            <!--<option value="Congo">Congo</option>-->
-            <!--<option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>-->
-            <!--<option value="Cook Islands">Cook Islands</option>-->
-            <!--<option value="Costa Rica">Costa Rica</option>-->
-            <!--<option value="Cote D'ivoire">Cote D'ivoire</option>-->
-            <!--<option value="Croatia">Croatia</option>-->
-            <!--<option value="Cuba">Cuba</option>-->
-            <!--<option value="Cyprus">Cyprus</option>-->
-            <!--<option value="Czech Republic">Czech Republic</option>-->
-            <!--<option value="Denmark">Denmark</option>-->
-            <!--<option value="Djibouti">Djibouti</option>-->
-            <!--<option value="Dominica">Dominica</option>-->
-            <!--<option value="Dominican Republic">Dominican Republic</option>-->
-            <!--<option value="Ecuador">Ecuador</option>-->
-            <!--<option value="Egypt">Egypt</option>-->
-            <!--<option value="El Salvador">El Salvador</option>-->
-            <!--<option value="Equatorial Guinea">Equatorial Guinea</option>-->
-            <!--<option value="Eritrea">Eritrea</option>-->
-            <!--<option value="Estonia">Estonia</option>-->
-            <!--<option value="Ethiopia">Ethiopia</option>-->
-            <!--<option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>-->
-            <!--<option value="Faroe Islands">Faroe Islands</option>-->
-            <!--<option value="Fiji">Fiji</option>-->
-            <!--<option value="Finland">Finland</option>-->
-            <!--<option value="France">France</option>-->
-            <!--<option value="French Guiana">French Guiana</option>-->
-            <!--<option value="French Polynesia">French Polynesia</option>-->
-            <!--<option value="French Southern Territories">French Southern Territories</option>-->
-            <!--<option value="Gabon">Gabon</option>-->
-            <!--<option value="Gambia">Gambia</option>-->
-            <!--<option value="Georgia">Georgia</option>-->
-            <!--<option value="Germany">Germany</option>-->
-            <!--<option value="Ghana">Ghana</option>-->
-            <!--<option value="Gibraltar">Gibraltar</option>-->
-            <!--<option value="Greece">Greece</option>-->
-            <!--<option value="Greenland">Greenland</option>-->
-            <!--<option value="Grenada">Grenada</option>-->
-            <!--<option value="Guadeloupe">Guadeloupe</option>-->
-            <!--<option value="Guam">Guam</option>-->
-            <!--<option value="Guatemala">Guatemala</option>-->
-            <!--<option value="Guinea">Guinea</option>-->
-            <!--<option value="Guinea-bissau">Guinea-bissau</option>-->
-            <!--<option value="Guyana">Guyana</option>-->
-            <!--<option value="Haiti">Haiti</option>-->
-            <!--<option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>-->
-            <!--<option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>-->
-            <!--<option value="Honduras">Honduras</option>-->
-            <!--<option value="Hong Kong">Hong Kong</option>-->
-            <!--<option value="Hungary">Hungary</option>-->
-            <!--<option value="Iceland">Iceland</option>-->
-            <!--<option value="India">India</option>-->
-            <!--<option value="Indonesia">Indonesia</option>-->
-            <!--<option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>-->
-            <!--<option value="Iraq">Iraq</option>-->
-            <!--<option value="Ireland">Ireland</option>-->
-            <!--<option value="Israel">Israel</option>-->
-            <!--<option value="Italy">Italy</option>-->
-            <!--<option value="Jamaica">Jamaica</option>-->
-            <!--<option value="Japan">Japan</option>-->
-            <!--<option value="Jordan">Jordan</option>-->
-            <!--<option value="Kazakhstan">Kazakhstan</option>-->
-            <!--<option value="Kenya">Kenya</option>-->
-            <!--<option value="Kiribati">Kiribati</option>-->
-            <!--<option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>-->
-            <!--<option value="Korea, Republic of">Korea, Republic of</option>-->
-            <!--<option value="Kuwait">Kuwait</option>-->
-            <!--<option value="Kyrgyzstan">Kyrgyzstan</option>-->
-            <!--<option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>-->
-            <!--<option value="Latvia">Latvia</option>-->
-            <!--<option value="Lebanon">Lebanon</option>-->
-            <!--<option value="Lesotho">Lesotho</option>-->
-            <!--<option value="Liberia">Liberia</option>-->
-            <!--<option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>-->
-            <!--<option value="Liechtenstein">Liechtenstein</option>-->
-            <!--<option value="Lithuania">Lithuania</option>-->
-            <!--<option value="Luxembourg">Luxembourg</option>-->
-            <!--<option value="Macao">Macao</option>-->
-            <!--<option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>-->
-            <!--<option value="Madagascar">Madagascar</option>-->
-            <!--<option value="Malawi">Malawi</option>-->
-            <!--<option value="Malaysia">Malaysia</option>-->
-            <!--<option value="Maldives">Maldives</option>-->
-            <!--<option value="Mali">Mali</option>-->
-            <!--<option value="Malta">Malta</option>-->
-            <!--<option value="Marshall Islands">Marshall Islands</option>-->
-            <!--<option value="Martinique">Martinique</option>-->
-            <!--<option value="Mauritania">Mauritania</option>-->
-            <!--<option value="Mauritius">Mauritius</option>-->
-            <!--<option value="Mayotte">Mayotte</option>-->
-            <!--<option value="Mexico">Mexico</option>-->
-            <!--<option value="Micronesia, Federated States of">Micronesia, Federated States of</option>-->
-            <!--<option value="Moldova, Republic of">Moldova, Republic of</option>-->
-            <!--<option value="Monaco">Monaco</option>-->
-            <!--<option value="Mongolia">Mongolia</option>-->
-            <!--<option value="Montenegro">Montenegro</option>-->
-            <!--<option value="Montserrat">Montserrat</option>-->
-            <!--<option value="Morocco">Morocco</option>-->
-            <!--<option value="Mozambique">Mozambique</option>-->
-            <!--<option value="Myanmar">Myanmar</option>-->
-            <!--<option value="Namibia">Namibia</option>-->
-            <!--<option value="Nauru">Nauru</option>-->
-            <!--<option value="Nepal">Nepal</option>-->
-            <!--<option value="Netherlands">Netherlands</option>-->
-            <!--<option value="Netherlands Antilles">Netherlands Antilles</option>-->
-            <!--<option value="New Caledonia">New Caledonia</option>-->
-            <!--<option value="New Zealand">New Zealand</option>-->
-            <!--<option value="Nicaragua">Nicaragua</option>-->
-            <!--<option value="Niger">Niger</option>-->
-            <!--<option value="Nigeria">Nigeria</option>-->
-            <!--<option value="Niue">Niue</option>-->
-            <!--<option value="Norfolk Island">Norfolk Island</option>-->
-            <!--<option value="Northern Mariana Islands">Northern Mariana Islands</option>-->
-            <!--<option value="Norway">Norway</option>-->
-            <!--<option value="Oman">Oman</option>-->
-            <!--<option value="Pakistan">Pakistan</option>-->
-            <!--<option value="Palau">Palau</option>-->
-            <!--<option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>-->
-            <!--<option value="Panama">Panama</option>-->
-            <!--<option value="Papua New Guinea">Papua New Guinea</option>-->
-            <!--<option value="Paraguay">Paraguay</option>-->
-            <!--<option value="Peru">Peru</option>-->
-            <!--<option value="Philippines">Philippines</option>-->
-            <!--<option value="Pitcairn">Pitcairn</option>-->
-            <!--<option value="Poland">Poland</option>-->
-            <!--<option value="Portugal">Portugal</option>-->
-            <!--<option value="Puerto Rico">Puerto Rico</option>-->
-            <!--<option value="Qatar">Qatar</option>-->
-            <!--<option value="Reunion">Reunion</option>-->
-            <!--<option value="Romania">Romania</option>-->
-            <!--<option value="Russian Federation">Russian Federation</option>-->
-            <!--<option value="Rwanda">Rwanda</option>-->
-            <!--<option value="Saint Helena">Saint Helena</option>-->
-            <!--<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>-->
-            <!--<option value="Saint Lucia">Saint Lucia</option>-->
-            <!--<option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>-->
-            <!--<option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>-->
-            <!--<option value="Samoa">Samoa</option>-->
-            <!--<option value="San Marino">San Marino</option>-->
-            <!--<option value="Sao Tome and Principe">Sao Tome and Principe</option>-->
-            <!--<option value="Saudi Arabia">Saudi Arabia</option>-->
-            <!--<option value="Senegal">Senegal</option>-->
-            <!--<option value="Serbia">Serbia</option>-->
-            <!--<option value="Seychelles">Seychelles</option>-->
-            <!--<option value="Sierra Leone">Sierra Leone</option>-->
-            <!--<option value="Singapore">Singapore</option>-->
-            <!--<option value="Slovakia">Slovakia</option>-->
-            <!--<option value="Slovenia">Slovenia</option>-->
-            <!--<option value="Solomon Islands">Solomon Islands</option>-->
-            <!--<option value="Somalia">Somalia</option>-->
-            <!--<option value="South Africa">South Africa</option>-->
-            <!--<option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>-->
-            <!--<option value="South Sudan">South Sudan</option>-->
-            <!--<option value="Spain">Spain</option>-->
-            <!--<option value="Sri Lanka">Sri Lanka</option>-->
-            <!--<option value="Sudan">Sudan</option>-->
-            <!--<option value="Suriname">Suriname</option>-->
-            <!--<option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>-->
-            <!--<option value="Swaziland">Swaziland</option>-->
-            <!--<option value="Sweden">Sweden</option>-->
-            <!--<option value="Switzerland">Switzerland</option>-->
-            <!--<option value="Syrian Arab Republic">Syrian Arab Republic</option>-->
-            <!--<option value="Taiwan, Republic of China">Taiwan, Republic of China</option>-->
-            <!--<option value="Tajikistan">Tajikistan</option>-->
-            <!--<option value="Tanzania, United Republic of">Tanzania, United Republic of</option>-->
-            <!--<option value="Thailand">Thailand</option>-->
-            <!--<option value="Timor-leste">Timor-leste</option>-->
-            <!--<option value="Togo">Togo</option>-->
-            <!--<option value="Tokelau">Tokelau</option>-->
-            <!--<option value="Tonga">Tonga</option>-->
-            <!--<option value="Trinidad and Tobago">Trinidad and Tobago</option>-->
-            <!--<option value="Tunisia">Tunisia</option>-->
-            <!--<option value="Turkey">Turkey</option>-->
-            <!--<option value="Turkmenistan">Turkmenistan</option>-->
-            <!--<option value="Turks and Caicos Islands">Turks and Caicos Islands</option>-->
-            <!--<option value="Tuvalu">Tuvalu</option>-->
-            <!--<option value="Uganda">Uganda</option>-->
-            <!--<option value="Ukraine">Ukraine</option>-->
-            <!--<option value="United Arab Emirates">United Arab Emirates</option>-->
-            <!--<option value="United Kingdom">United Kingdom</option>-->
-            <!--<option value="United States">United States</option>-->
-            <!--<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>-->
-            <!--<option value="Uruguay">Uruguay</option>-->
-            <!--<option value="Uzbekistan">Uzbekistan</option>-->
-            <!--<option value="Vanuatu">Vanuatu</option>-->
-            <!--<option value="Venezuela">Venezuela</option>-->
-            <!--<option value="Viet Nam">Viet Nam</option>-->
-            <!--<option value="Virgin Islands, British">Virgin Islands, British</option>-->
-            <!--<option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>-->
-            <!--<option value="Wallis and Futuna">Wallis and Futuna</option>-->
-            <!--<option value="Western Sahara">Western Sahara</option>-->
-            <!--<option value="Yemen">Yemen</option>-->
-            <!--<option value="Zambia">Zambia</option>-->
-            <!--<option value="Zimbabwe">Zimbabwe</option>-->
-        <!--</select>-->
+    <!-- build:css content/css/main.css -->
+    <link rel="stylesheet" href="content/css/main.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="eventmanagerApp">
+    <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak></div>
+    <div ui-view="navbar" ng-cloak></div>
+    <div class="container">
+        <div class="well" ui-view="content"></div>
 
+        <div class="footer" ng-cloak>
+            <p translate="footer">This is your footer</p>
+        </div>
+    </div>
+
+    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
+
+    <!-- build:js app/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/messageformat/messageformat.js"></script>
+    <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js app/app.js  -->
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/account/reset/request/reset.request.state.js"></script>
+    <script src="app/account/reset/request/reset.request.controller.js"></script>
+    <script src="app/account/reset/finish/reset.finish.state.js"></script>
+    <script src="app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="app/services/user/user.service.js"></script>
+    <script src="app/services/auth/sessions.service.js"></script>
+    <script src="app/services/auth/register.service.js"></script>
+    <script src="app/services/auth/principal.service.js"></script>
+    <script src="app/services/auth/password.service.js"></script>
+    <script src="app/services/auth/password-reset-init.service.js"></script>
+    <script src="app/services/auth/password-reset-finish.service.js"></script>
+    <script src="app/services/auth/has-authority.directive.js"></script>
+    <script src="app/services/auth/has-any-authority.directive.js"></script>
+    <script src="app/services/auth/auth.session.service.js"></script>
+    <script src="app/services/auth/auth.service.js"></script>
+    <script src="app/services/auth/activate.service.js"></script>
+    <script src="app/services/auth/account.service.js"></script>
+    <script src="app/layouts/navbar/navbar.controller.js"></script>
+    <script src="app/layouts/navbar/active-menu.directive.js"></script>
+    <script src="app/layouts/navbar/active-link.directive.js"></script>
+    <script src="app/layouts/error/error.state.js"></script>
+    <script src="app/entities/invitation/invitation.state.js"></script>
+    <script src="app/entities/invitation/invitation.service.js"></script>
+    <script src="app/entities/invitation/invitation.controller.js"></script>
+    <script src="app/entities/invitation/invitation-dialog.controller.js"></script>
+    <script src="app/entities/invitation/invitation-detail.controller.js"></script>
+    <script src="app/entities/invitation/invitation-delete-dialog.controller.js"></script>
+    <script src="app/entities/event/event.state.js"></script>
+    <script src="app/entities/event/event.service.js"></script>
+    <script src="app/entities/event/event.controller.js"></script>
+    <script src="app/entities/event/event-dialog.controller.js"></script>
+    <script src="app/entities/event/event-detail.controller.js"></script>
+    <script src="app/entities/event/event-delete-dialog.controller.js"></script>
+    <script src="app/components/util/truncate-words.filter.js"></script>
+    <script src="app/components/util/truncate-characters.filter.js"></script>
+    <script src="app/components/util/sort.directive.js"></script>
+    <script src="app/components/util/sort-by.directive.js"></script>
+    <script src="app/components/util/parse-links.service.js"></script>
+    <script src="app/components/util/pagination-util.service.js"></script>
+    <script src="app/components/util/jhi-item-count.directive.js"></script>
+    <script src="app/components/util/date-util.service.js"></script>
+    <script src="app/components/util/data-util.service.js"></script>
+    <script src="app/components/util/capitalize.filter.js"></script>
+    <script src="app/components/util/base64.service.js"></script>
+    <script src="app/components/login/login.service.js"></script>
+    <script src="app/components/login/login.controller.js"></script>
+    <script src="app/components/language/language.service.js"></script>
+    <script src="app/components/language/language.filter.js"></script>
+    <script src="app/components/language/language.controller.js"></script>
+    <script src="app/components/language/language.constants.js"></script>
+    <script src="app/components/form/uib-pagination.config.js"></script>
+    <script src="app/components/form/uib-pager.config.js"></script>
+    <script src="app/components/form/show-validation.directive.js"></script>
+    <script src="app/components/form/pagination.constants.js"></script>
+    <script src="app/components/form/minbytes.directive.js"></script>
+    <script src="app/components/form/maxbytes.directive.js"></script>
+    <script src="app/components/alert/alert.service.js"></script>
+    <script src="app/components/alert/alert.directive.js"></script>
+    <script src="app/components/alert/alert-error.directive.js"></script>
+    <script src="app/blocks/interceptor/notification.interceptor.js"></script>
+    <script src="app/blocks/interceptor/errorhandler.interceptor.js"></script>
+    <script src="app/blocks/interceptor/auth-expired.interceptor.js"></script>
+    <script src="app/blocks/handlers/translation.handler.js"></script>
+    <script src="app/blocks/handlers/state.handler.js"></script>
+    <script src="app/blocks/config/translation.config.js"></script>
+    <script src="app/blocks/config/translation-storage.provider.js"></script>
+    <script src="app/blocks/config/localstorage.config.js"></script>
+    <script src="app/blocks/config/http.config.js"></script>
+    <script src="app/blocks/config/compile.config.js"></script>
+    <script src="app/blocks/config/alert.config.js"></script>
+    <script src="app/admin/user-management/user-management.state.js"></script>
+    <script src="app/admin/user-management/user-management.controller.js"></script>
+    <script src="app/admin/user-management/user-management-dialog.controller.js"></script>
+    <script src="app/admin/user-management/user-management-detail.controller.js"></script>
+    <script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+    <script src="app/admin/metrics/metrics.state.js"></script>
+    <script src="app/admin/metrics/metrics.service.js"></script>
+    <script src="app/admin/metrics/metrics.modal.controller.js"></script>
+    <script src="app/admin/metrics/metrics.controller.js"></script>
+    <script src="app/admin/logs/logs.state.js"></script>
+    <script src="app/admin/logs/logs.service.js"></script>
+    <script src="app/admin/logs/logs.controller.js"></script>
+    <script src="app/admin/health/health.state.js"></script>
+    <script src="app/admin/health/health.service.js"></script>
+    <script src="app/admin/health/health.modal.controller.js"></script>
+    <script src="app/admin/health/health.controller.js"></script>
+    <script src="app/admin/docs/docs.state.js"></script>
+    <script src="app/admin/configuration/configuration.state.js"></script>
+    <script src="app/admin/configuration/configuration.service.js"></script>
+    <script src="app/admin/configuration/configuration.controller.js"></script>
+    <script src="app/admin/audits/audits.state.js"></script>
+    <script src="app/admin/audits/audits.service.js"></script>
+    <script src="app/admin/audits/audits.controller.js"></script>
+    <script src="app/account/sessions/sessions.state.js"></script>
+    <script src="app/account/sessions/sessions.controller.js"></script>
+    <script src="app/account/settings/settings.state.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/register/register.state.js"></script>
+    <script src="app/account/register/register.controller.js"></script>
+    <script src="app/account/password/password.state.js"></script>
+    <script src="app/account/password/password.controller.js"></script>
+    <script src="app/account/password/password-strength-bar.directive.js"></script>
+    <script src="app/account/activate/activate.state.js"></script>
+    <script src="app/account/activate/activate.controller.js"></script>
+    <script src="app/home/home.state.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/entities/entity.state.js"></script>
+    <script src="app/admin/admin.state.js"></script>
+    <script src="app/account/account.state.js"></script>
+    <script src="app/app.state.js"></script>
+    <script src="app/app.constants.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
 
 </body>
 </html>

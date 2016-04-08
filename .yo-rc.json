@@ -1,24 +1,32 @@
 {
   "generator-jhipster": {
-    "baseName": "eventsmanager",
-    "packageName": "com.sgebs",
-    "packageFolder": "com/sgebs",
+    "jhipsterVersion": "3.0.0",
+    "baseName": "eventmanager",
+    "packageName": "com.sgebs.eventmanager",
+    "packageFolder": "com/sgebs/eventmanager",
+    "serverPort": "8080",
     "authenticationType": "session",
-    "hibernateCache": "ehcache",
+    "hibernateCache": "no",
     "clusteredHttpSession": "no",
     "websocket": "no",
     "databaseType": "sql",
     "devDatabaseType": "mysql",
     "prodDatabaseType": "mysql",
-    "searchEngine": "elasticsearch",
-    "useSass": false,
+    "searchEngine": "no",
     "buildTool": "maven",
-    "frontendBuilder": "grunt",
-    "enableTranslation": true,
     "enableSocialSignIn": false,
-    "rememberMeKey": "d8eca88b5481e0e95bf3ae5310e9b355ddacfc13",
+    "rememberMeKey": "57aa102206a9949cd7008f64efa37557d025c407",
+    "useSass": false,
+    "applicationType": "monolith",
     "testFrameworks": [
       "gatling"
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "fr",
+      "ro"
     ]
   }
 }

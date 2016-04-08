@@ -1,6 +1,8 @@
-eventsmanager-sonar:
-  container_name: eventsmanager-sonar
-  image: sonarqube:4.5.6
-  ports:
-    - "9000:9000"
-    - "9092:9092"
+version: '2'
+services:
+    eventmanager-sonar:
+        container_name: eventmanager-sonar
+        image: sonarqube:5.3
+        ports:
+            - 9000:9000
+            - 9092:9092

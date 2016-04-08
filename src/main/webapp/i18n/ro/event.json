@@ -1,5 +1,5 @@
 {
-    "eventsmanagerApp": {
+    "eventmanagerApp": {
         "event" : {
             "home": {
                 "title": "Events",
@@ -18,9 +18,9 @@
             },
             "name": "Name",
             "date": "Date",
+            "location": "Location",
             "details": "Details",
-            "dateCreated": "DateCreated",
-            "lastUpdated": "LastUpdated",
+            "invitation": "Invitation",
             "createdBy": "CreatedBy"
         }
     }

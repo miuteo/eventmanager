@@ -2,7 +2,7 @@
 
 describe('Controller Tests', function() {
 
-    describe('Invitation Detail Controller', function() {
+    describe('Invitation Management Detail Controller', function() {
         var $scope, $rootScope;
         var MockEntity, MockInvitation, MockEvent, MockUser;
         var createController;
@@ -32,7 +32,7 @@ describe('Controller Tests', function() {
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'eventsmanagerApp:invitationUpdate';
+                var eventType = 'eventmanagerApp:invitationUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

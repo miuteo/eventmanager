@@ -11,14 +11,17 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+
 spring:
+    application:
+        name: eventmanager
     jpa:
         open-in-view: false
         hibernate:
             ddl-auto: none
             naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
     messages:
-        basename: classpath:/i18n/messages
+        basename: i18n/messages
     mvc:
         favicon:
             enabled: false
@@ -46,16 +49,18 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: eventsmanager@localhost
+        from: eventmanager@localhost
     security:
-        rememberme:
+        rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: d8eca88b5481e0e95bf3ae5310e9b355ddacfc13
+            key: 57aa102206a9949cd7008f64efa37557d025c407
     swagger:
-        title: eventsmanager API
-        description: eventsmanager API documentation
+        title: eventmanager API
+        description: eventmanager API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contactName:
+        contactUrl:
+        contactEmail:
         license:
         licenseUrl:

@@ -1,4 +1,4 @@
-beforeEach(module('eventsmanagerApp'));
+beforeEach(module('eventmanagerApp'));
 /**
  * returns a function whose angular will be replaced
  * with whatever mock was supplied.

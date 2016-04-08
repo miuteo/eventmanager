@@ -1,11 +1,11 @@
 {
-    "eventsmanagerApp": {
+    "eventmanagerApp": {
         "invitation" : {
             "home": {
                 "title": "Invitations",
                 "createLabel": "Créer un nouveau Invitation",
                 "createOrEditLabel": "Créer ou éditer un Invitation",
-                "search": "Search for Invitation"
+                "search": "Recherche pour Invitation"
             },
             "created": "Un nouveau Invitation a été créé avec l'identifiant {{ param }}",
             "updated": "Le Invitation avec l'identifiant {{ param }} a été mis à jour",
@@ -16,13 +16,11 @@
             "detail": {
                 "title": "Invitation"
             },
-            "answer": "Answer",
-            "message": "Message",
-            "dateCreated": "DateCreated",
-            "lastUpdated": "LastUpdated",
+            "date": "Date",
+            "accept": "Accept",
             "event": "Event",
-            "user": "User"
+            "user": "User",
+            "createdBy": "CreatedBy"
         }
     }
 }
-

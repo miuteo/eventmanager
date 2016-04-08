@@ -12,13 +12,12 @@
 
 spring:
     datasource:
-        driver-class-name: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:mem:eventsmanager;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:eventmanager;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
     jpa:
-        database-platform: com.sgebs.domain.util.FixedH2Dialect
+        database-platform: com.sgebs.eventmanager.domain.util.FixedH2Dialect
         database: H2
         open-in-view: false
         show_sql: true
@@ -30,14 +29,6 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.hbm2ddl.auto: validate
-    data:
-        elasticsearch:
-            cluster-name:
-            cluster-nodes:
-            properties:
-                path:
-                  logs: target/elasticsearch/log
-                  data: target/elasticsearch/data
     mail:
         host: localhost
     mvc:
@@ -67,16 +58,18 @@ jhipster:
         maxPoolSize: 50
         queueCapacity: 10000
     security:
-        rememberme:
+        rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: d8eca88b5481e0e95bf3ae5310e9b355ddacfc13
+            key: 57aa102206a9949cd7008f64efa37557d025c407
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
     swagger:
-        title: eventsmanager API
-        description: eventsmanager API documentation
+        title: eventmanager API
+        description: eventmanager API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contactName:
+        contactUrl:
+        contactEmail:
         license:
         licenseUrl:

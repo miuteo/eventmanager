@@ -1,5 +1,5 @@
 {
-    "eventsmanagerApp": {
+    "eventmanagerApp": {
         "invitation" : {
             "home": {
                 "title": "Invitations",
@@ -16,12 +16,11 @@
             "detail": {
                 "title": "Invitation"
             },
-            "answer": "Answer",
-            "message": "Message",
-            "dateCreated": "DateCreated",
-            "lastUpdated": "LastUpdated",
+            "date": "Date",
+            "accept": "Accept",
             "event": "Event",
-            "user": "User"
+            "user": "User",
+            "createdBy": "CreatedBy"
         }
     }
 }

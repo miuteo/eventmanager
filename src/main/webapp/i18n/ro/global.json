@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "eventsmanager",
+        "title": "Eventmanager",
         "browsehappy": "Folosiți un browser <strong>vechi</strong> . Va rugăm <a href=\"http://browsehappy.com/?locale=en\"> să îl upgradați</a> pentru o experiența îmbunătațită.",
         "menu": {
             "home": "Acasă",
@@ -10,7 +10,6 @@
                 "bankAccount": "ContBancar",
                 "label": "Etichetă",
                 "operation": "Operație",
-                "resource": "Resource",
                 "event": "Event",
                 "invitation": "Invitation",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -26,7 +25,7 @@
             },
             "admin": {
                 "main": "Administrare",
-                "user-management": "User management",
+                "userManagement": "User management",
                 "tracker": "Informații utilizatori",
                 "metrics": "Metrici",
                 "health": "Stare",
@@ -57,8 +56,8 @@
         },
         "messages": {
             "info": {
-                "authenticated": "Dacă doriți să vă <a class=\"alert-link\" href=\"#/login\">autentificați</a>, puteți încerca conturile implicite:<br/>- Administrator (login=\"admin\" si parola=\"admin\") <br/>- Utilizator (login=\"user\" si parola=\"user\").",
-                "register": "Înca nu aveți un cont? <a class=\"alert-link\" href=\"#/register\">Înregistrați un nou cont</a>"
+                "authenticated": "Dacă doriți să vă <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">autentificați</a>, puteți încerca conturile implicite:<br/>- Administrator (login=\"admin\" si parola=\"admin\") <br/>- Utilizator (login=\"user\" si parola=\"user\").",
+                "register": "Înca nu aveți un cont? <a class=\"alert-link\" ui-sref=\"register\">Înregistrați un nou cont</a>"
             },
             "error": {
                 "dontmatch" : "Parola si confirmarea ei nu corespund!"
