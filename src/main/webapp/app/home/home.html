@@ -1,12 +1,27 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
         <div class="col-md-8">
-            <h1 translate="home.title">Welcome, Java Hipster!</h1>
-            <p class="lead" translate="home.subtitle">This is your homepage</p>
-
+            <h1 translate="home.title">Welcome to Event Manager!</h1>
+            <p class="lead" translate="home.subtitle">Here are your invitations</p>
+            <div ng-controller="HomeInvitationsController">
+                <div ng-repeat="invitation in invitationsHome track by invitation.id">
+                    <h2>{{ invitation.event.name }}</h2>
+                    <small>Event date {{invitation.event.date | date: 'short'}} created by {{invitation.event.createdBy.login}} at location {{ invitation.event.location }} </small>
+                    <div ng-bind-html="invitation.event.details"></div>
+                    <div class="btn-group" style="margin-top: 10px">
+                        <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:true})"
+                                class="btn btn-xs btn-default">
+                                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>Accept</span>
+                        </button>
+                        <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:false})"
+                                class="btn btn-xs btn-danger">
+                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Reject</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
             <div ng-switch="vm.isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true" translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
@@ -20,22 +35,6 @@
                     You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
                 </div>
             </div>
-
-            <p translate="home.question">
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank" translate="home.link.homepage">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" translate="home.link.bugtracker">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" translate="home.link.chat">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank"  translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" translate="home.github">Github</a>!
-            </p>
         </div>
     </div>
 </div>

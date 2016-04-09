@@ -91,6 +91,23 @@ public class InvitationResource {
             .body(result);
     }
 
+    @RequestMapping(value = "/acceptinvitation",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Invitation> acceptInvitation(@RequestBody Invitation invitation) throws URISyntaxException {
+        log.debug("REST request to update Invitation : {}", invitation);
+        if (invitation.getId() != null) {
+            Invitation existingInvitation =  invitationService.findOne(invitation.getId());
+            existingInvitation.setAccept(invitation.isAccept());
+            Invitation result = invitationService.save(existingInvitation);
+            return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert("invitation", invitation.getId().toString()))
+                .body(result);
+        }
+        return null;
+    }
+
     /**
      * GET  /invitations : get all the invitations.
      *
@@ -102,9 +119,21 @@ public class InvitationResource {
     @Timed
     public List<Invitation> getAllInvitations() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.debug("REST request to get all Invitations visibile by user [{}] (created or invited)", auth.getName());
+        log.debug("REST request to get all Invitations visibile by user [{}] (created)", auth.getName());
+        return invitationService.findCreatedByUserLogin(auth.getName());
+    }
+
+    @RequestMapping(value = "/homeinvitations",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Invitation> getHomeInvitations() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        log.debug("REST request to get all Invitations addressed to user [{}] (invited)", auth.getName());
         return invitationService.findForUserLogin(auth.getName());
     }
+
+
 
     /**
      * GET  /invitations/:id : get the "id" invitation.

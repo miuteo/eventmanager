@@ -58,6 +58,13 @@ public class InvitationService {
         return result;
     }
 
+    @Transactional(readOnly = true)
+    public List<Invitation> findCreatedByUserLogin(String login) {
+        log.debug("Request to get all Invitations for user [{}]", login);
+        List<Invitation> result = invitationRepository.findCreatedByUserLogin(login);
+        return result;
+    }
+
     /**
      *  Get one invitation by id.
      *

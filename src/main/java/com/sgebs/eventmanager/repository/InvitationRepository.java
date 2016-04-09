@@ -12,6 +12,9 @@ import java.util.List;
  */
 public interface InvitationRepository extends JpaRepository<Invitation,Long> {
 
-    @Query("select i from Invitation i where i.user.login = :login or i.createdBy.login = :login")
+    @Query("select i from Invitation i where i.createdBy.login = :login")
+    public List<Invitation> findCreatedByUserLogin(@Param("login") String login);
+
+    @Query("select i from Invitation i where i.user.login = :login")
     public List<Invitation> findForUserLogin(@Param("login") String login);
 }
