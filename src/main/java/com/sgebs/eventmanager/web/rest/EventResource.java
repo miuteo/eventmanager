@@ -3,7 +3,9 @@ package com.sgebs.eventmanager.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.sgebs.eventmanager.domain.Event;
 import com.sgebs.eventmanager.domain.User;
+import com.sgebs.eventmanager.repository.UserRepository;
 import com.sgebs.eventmanager.service.EventService;
+import com.sgebs.eventmanager.service.UserService;
 import com.sgebs.eventmanager.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,9 @@ public class EventResource {
     @Inject
     private EventService eventService;
 
+    @Inject
+    private UserService userService;
+
     /**
      * POST  /events : Create a new event.
      *
@@ -47,6 +52,13 @@ public class EventResource {
     @Timed
     public ResponseEntity<Event> createEvent(@Valid @RequestBody Event event) throws URISyntaxException {
         log.debug("REST request to save Event : {}", event);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName();
+        event.setCreatedBy(userService.getUserByLogin(login));
+
+
+        log.debug(auth.toString());
+//        event.setCreatedBy();
         if (event.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("event", "idexists", "A new event cannot already have an ID")).body(null);
         }

@@ -180,6 +180,13 @@ public class UserService {
         user.getAuthorities().size(); // eagerly load the association
         return user;
     }
+    @Transactional(readOnly = true)
+    public User getUserByLogin(String login) {
+        Optional<User> user = userRepository.findOneByLogin(login);
+        if(user.isPresent())
+            return user.get();
+        return null;
+    }
 
     @Transactional(readOnly = true)
     public User getUserWithAuthorities() {
