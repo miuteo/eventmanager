@@ -24,22 +24,21 @@
             <column name="date" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="accept" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="event_id" type="bigint"/>
             <column name="user_id" type="bigint">
                 <constraints unique="true"/>
             </column>
             <column name="created_by_id" type="bigint">
-                <constraints unique="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="invitation" columnName="date" columnDataType="datetime"/>
-        
+
         <addForeignKeyConstraint baseColumnNames="event_id"
                                  baseTableName="invitation"
                                  constraintName="fk_invitation_event_id"

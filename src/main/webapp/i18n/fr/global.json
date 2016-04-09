@@ -116,5 +116,5 @@
         "emailexists": "E-mail is already in use!",
         "idexists": "A new {{entityName}} cannot already have an ID"
     },
-    "footer": "Ceci est votre pied de page"
+    "footer": "Créé par Teo Miu (miu.teo@gmail.com)"
 }
