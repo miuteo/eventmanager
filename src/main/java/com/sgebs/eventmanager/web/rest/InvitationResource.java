@@ -3,6 +3,7 @@ package com.sgebs.eventmanager.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.sgebs.eventmanager.domain.Invitation;
 import com.sgebs.eventmanager.service.InvitationService;
+import com.sgebs.eventmanager.service.UserService;
 import com.sgebs.eventmanager.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +33,9 @@ public class InvitationResource {
 
     @Inject
     private InvitationService invitationService;
+
+    @Inject
+    private UserService userService;
 
     /**
      * POST  /invitations : Create a new invitation.
@@ -48,7 +53,15 @@ public class InvitationResource {
         if (invitation.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation", "idexists", "A new invitation cannot already have an ID")).body(null);
         }
+        invitation.setAccept(null);
+        invitation.setDate( ZonedDateTime.now());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName();
+        invitation.setCreatedBy(userService.getUserByLogin(login));
         Invitation result = invitationService.save(invitation);
+
+
+
         return ResponseEntity.created(new URI("/api/invitations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("invitation", result.getId().toString()))
             .body(result);
