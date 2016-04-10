@@ -33,7 +33,6 @@
         }
 
         var updateInvitation = function(invitation) {
-            debugger;
             var d = $q.defer();
 
             $http({
