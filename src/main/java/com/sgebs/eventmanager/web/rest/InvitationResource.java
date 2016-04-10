@@ -53,7 +53,8 @@ public class InvitationResource {
         if (invitation.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation", "idexists", "A new invitation cannot already have an ID")).body(null);
         }
-        invitation.setAccept(false);
+        // NULL means not ACCEPTED or REJECTED
+        invitation.setAccept(null);
         invitation.setDate( ZonedDateTime.now());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName();
@@ -127,11 +128,9 @@ public class InvitationResource {
     @Timed
     public List<Invitation> getHomeInvitations() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.debug("REST request to get all Invitations addressed to user [{}] (invited)", auth.getName());
-        return invitationService.findForUserLogin(auth.getName());
+        log.debug("REST request to get all Invitations addressed to user [{}] (invited) and not accepted", auth.getName());
+        return invitationService.findForUserLoginNotAccepted(auth.getName());
     }
-
-
 
     /**
      * GET  /invitations/:id : get the "id" invitation.

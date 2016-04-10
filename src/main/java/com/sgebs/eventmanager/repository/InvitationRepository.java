@@ -15,6 +15,6 @@ public interface InvitationRepository extends JpaRepository<Invitation,Long> {
     @Query("select i from Invitation i where i.createdBy.login = :login")
     public List<Invitation> findCreatedByUserLogin(@Param("login") String login);
 
-    @Query("select i from Invitation i where i.user.login = :login")
-    public List<Invitation> findForUserLogin(@Param("login") String login);
+    @Query("select i from Invitation i where i.user.login = :login and i.accept is null")
+    public List<Invitation> findForUserLoginNotAccepted(@Param("login") String login);
 }

@@ -52,9 +52,9 @@ public class InvitationService {
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public List<Invitation> findForUserLogin(String login) {
-        log.debug("Request to get all Invitations for user [{}]", login);
-        List<Invitation> result = invitationRepository.findForUserLogin(login);
+    public List<Invitation> findForUserLoginNotAccepted(String login) {
+        log.debug("Request to get all Invitations for user [{}] and not accepted", login);
+        List<Invitation> result = invitationRepository.findForUserLoginNotAccepted(login);
         return result;
     }
 
