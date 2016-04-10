@@ -25,13 +25,12 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="accept" type="bit">
-                <constraints nullable="true" />
+            <column name="accept" type="bit" defaultValueBoolean="false">
+                <constraints nullable="false"/>
             </column>
 
             <column name="event_id" type="bigint"/>
             <column name="user_id" type="bigint">
-                <constraints unique="true"/>
             </column>
             <column name="created_by_id" type="bigint">
             </column>

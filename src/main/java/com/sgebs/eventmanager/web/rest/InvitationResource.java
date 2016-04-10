@@ -53,14 +53,12 @@ public class InvitationResource {
         if (invitation.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation", "idexists", "A new invitation cannot already have an ID")).body(null);
         }
-        invitation.setAccept(null);
+        invitation.setAccept(false);
         invitation.setDate( ZonedDateTime.now());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName();
         invitation.setCreatedBy(userService.getUserByLogin(login));
         Invitation result = invitationService.save(invitation);
-
-
 
         return ResponseEntity.created(new URI("/api/invitations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("invitation", result.getId().toString()))
@@ -96,7 +94,7 @@ public class InvitationResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Invitation> acceptInvitation(@RequestBody Invitation invitation) throws URISyntaxException {
-        log.debug("REST request to update Invitation : {}", invitation);
+        log.debug("REST request to accept Invitation : {}", invitation);
         if (invitation.getId() != null) {
             Invitation existingInvitation =  invitationService.findOne(invitation.getId());
             existingInvitation.setAccept(invitation.isAccept());
@@ -105,7 +103,7 @@ public class InvitationResource {
                 .headers(HeaderUtil.createEntityUpdateAlert("invitation", invitation.getId().toString()))
                 .body(result);
         }
-        return null;
+        return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation", "idexists", "You cannot accept an invitation that does not exist")).body(null);
     }
 
     /**
