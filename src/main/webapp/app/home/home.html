@@ -4,17 +4,17 @@
             <h1 translate="home.title">Welcome to Event Manager!</h1>
             <p class="lead" translate="home.subtitle">Here are your invitations</p>
             <div ng-controller="HomeInvitationsController">
-                <div ng-repeat="invitation in invitationsHome track by invitation.id">
+                <div ng-repeat="invitation in invitationsHome track by invitation.id" class="alert alert-success">
                     <h2>{{ invitation.event.name }}</h2>
                     <small>Event date {{invitation.event.date | date: 'short'}} created by {{invitation.event.createdBy.login}} at location {{ invitation.event.location }} </small>
                     <div ng-bind-html="invitation.event.details"></div>
                     <div class="btn-group" style="margin-top: 10px">
                         <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:true})"
-                                class="btn btn-xs btn-default">
+                                class="btn btn-success">
                                 <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>Accept</span>
                         </button>
                         <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:false})"
-                                class="btn btn-xs btn-danger">
+                                class="btn btn-danger">
                                 <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Reject</span>
                         </button>
                     </div>
