@@ -5,7 +5,7 @@
         .module('eventmanagerApp')
         .controller('HomeInvitationsController', HomeInvitationsController);
 
-    HomeInvitationsController.$inject = ['$scope', 'Principal', 'LoginService', 'HomeInvitation', '$q', '$http'];
+    HomeInvitationsController.$inject = ['$scope', 'Principal', 'LoginService', 'HomeInvitation', '$http', '$q'];
 
     function HomeInvitationsController ($scope, Principal, LoginService, HomeInvitation, $http, $q) {
 
@@ -49,17 +49,18 @@
         };
 
         $scope.acceptOrRejectInvitation = function (invitation) {
-            console.log(JSON.stringify(invitation));
-
             if (invitation.id !== null) {
-                updateInvitation(invitation).then(function(status) {
-                    console.log("Save OK" + status);
+                updateInvitation(invitation).then(function(result) {
+                    console.log("Save OK " + JSON.stringify(result));
+                    // reload invitations to accept
+                    getInvitationsToAccept();
                 }, function(err) {
-                    console.log("Save Error" + err);
+                    console.log("Save Error " + + JSON.stringify(err));
                 });
             }
         };
 
+        // initial load for this page
         getInvitationsToAccept();
     }
 })();
