@@ -55,5 +55,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+            <addUniqueConstraint
+                columnNames="event_id, user_id"
+                constraintName="event_id_user_id"
+                schemaName="eventmanager"
+                tableName="invitation"/>
+
     </changeSet>
 </databaseChangeLog>
