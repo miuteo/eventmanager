@@ -27,6 +27,18 @@
                     return $translate.refresh();
                 }]
             }
+        }).state('calendar', {
+            parent: 'home',
+            url: 'calendar',
+            data: {
+                roles: ['ROLE_USER']
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/calendar/calendar.html',
+                    controller: 'CalendarController'
+                }
+            }
         });
     }
 })();
