@@ -1,9 +1,33 @@
 'use strict';
 
 angular.module('eventmanagerApp')
-    .controller('CalendarController', function ($scope, $state, $compile, $log, uiCalendarConfig, Points, BloodPressure, Weight) {
+    .controller('CalendarController', function ($scope, $state, $compile, $log, uiCalendarConfig,HomeInvitation) {
 
         /* event source that calls a function on every view switch */
+        $scope.invitationsHome = [];
+
+
+
+        function getInvitationsToAccept() {
+
+
+            HomeInvitation.query(function(result) {
+                $scope.invitationsHome = result;
+                console.log(result);
+
+            });
+
+        }
+        getInvitationsToAccept();
+        console.log($scope.invitationsHome);
+        
+
+
+
+
+
+
+
         $scope.eventSource = function getEvents(start, end, timezone, callback) {
             // start and end are for displayed calendar, so see if end is in current month before subtracting a month
             var date = end;
@@ -12,48 +36,45 @@ angular.module('eventmanagerApp')
                 date = end.subtract({months: 1});
             }
             date = date.format('YYYY-MM');
-            $log.info("Fetching data for: " + date);
+            $log.info("Fetching data forasfasf: " + date);
             $scope.events = [];
-            Points.byMonth({month: date}, function (data) {
-                data.points.forEach(function (item) {
+
+
+            var i;
+
+            console.log($scope.invitationsHome);
+
+            // for(i=0; i<$scope.invitationsHome.length;i++)
+            //     $scope.events.push({
+            //         id: $scope.invitationsHome[i].id,
+            //         title: $scope.invitationsHome[i].event.name,
+            //         tooltip: 'Exercise: ',
+            //         type: 'points',
+            //         start: '2016-04-04',
+            //         allDay: true,
+            //         className: ['label label-primary']
+            //
+            //     });
+
+
+
                     $scope.events.push({
-                        id: item.id,
-                        title: item.exercise + item.meals + item.alcohol + ' Points',
-                        tooltip: 'Exercise: ' + item.exercise + ', Meals: ' + item.meals + ', Alcohol: ' + item.alcohol,
+                        id: '4',
+                        title: ' Points',
+                        tooltip: 'Exercise: ',
                         type: 'points',
-                        start: item.date,
+                        start: '2016-04-04',
                         allDay: true,
                         className: ['label label-primary']
-                    })
-                });
 
-                BloodPressure.byMonth({month: date}, function (data) {
-                    data.readings.forEach(function (item) {
-                        $scope.events.push({
-                            id: item.id,
-                            title: item.systolic + '/' + item.diastolic,
-                            type: 'bp',
-                            start: item.timestamp,
-                            allDay: false,
-                            className: ['label label-info']
-                        });
                     });
 
-                    Weight.byMonth({month: date}, function (data) {
-                        data.weighIns.forEach(function (item) {
-                            $scope.events.push({
-                                id: item.id,
-                                title: "" + item.weight,
-                                type: 'weight',
-                                start: item.timestamp,
-                                allDay: false,
-                                className: ['label label-success']
-                            })
-                        });
-                        callback($scope.events);
-                    });
-                });
-            });
+
+
+            callback($scope.events);
+
+
+
 
         };
 

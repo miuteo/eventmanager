@@ -28,8 +28,8 @@
                 }]
             }
         }).state('calendar', {
-            parent: 'home',
-            url: 'calendar',
+            parent: 'app',
+            url: '/calendar',
             data: {
                 roles: ['ROLE_USER']
             },
