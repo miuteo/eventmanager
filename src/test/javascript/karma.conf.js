@@ -33,6 +33,9 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/json3/lib/json3.js',
             'src/main/webapp/bower_components/ng-file-upload/ng-file-upload.js',
             'src/main/webapp/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
+            'src/main/webapp/bower_components/moment/moment.js',
+            'src/main/webapp/bower_components/fullcalendar/dist/fullcalendar.js',
+            'src/main/webapp/bower_components/angular-ui-calendar/src/calendar.js',
             'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'src/main/webapp/app/app.module.js',

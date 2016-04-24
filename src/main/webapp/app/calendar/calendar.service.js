@@ -2,15 +2,15 @@
     'use strict';
     angular
         .module('eventmanagerApp')
-        .factory('HomeInvitation', HomeInvitation);
+        .factory('CalendarService', CalendarService);
 
-    HomeInvitation.$inject = ['$resource', 'DateUtils'];
+    CalendarService.$inject = ['$resource', 'DateUtils'];
 
-    function HomeInvitation ($resource, DateUtils) {
-        var resourceUrl =  'api/homeinvitations';
+    function CalendarService ($resource, DateUtils) {
+        var resourceUrl =  'api/acceptedinvitations/:month';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { method: 'GET', isArray: true },
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -22,3 +22,4 @@
         });
     }
 })();
+
