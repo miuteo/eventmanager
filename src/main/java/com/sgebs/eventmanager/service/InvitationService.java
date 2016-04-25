@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -55,6 +56,18 @@ public class InvitationService {
     public List<Invitation> findForUserLoginNotAccepted(String login) {
         log.debug("Request to get all Invitations for user [{}] and not accepted", login);
         List<Invitation> result = invitationRepository.findForUserLoginNotAccepted(login);
+        return result;
+    }
+
+    /**
+     *  Get all the accepted invitations.
+     *
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public List<Invitation> findAllAcceptedByDateBetweenForUserLogin(String login, ZonedDateTime firstDate, ZonedDateTime secondDate) {
+        log.debug("Request to get all accepted Invitations for user [{}] ", login);
+        List<Invitation> result = invitationRepository.findAllAcceptedByDateBetweenForUserLogin(login, firstDate, secondDate);
         return result;
     }
 

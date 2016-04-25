@@ -2,11 +2,14 @@ package com.sgebs.eventmanager.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.sgebs.eventmanager.domain.Invitation;
+import com.sgebs.eventmanager.security.SecurityUtils;
 import com.sgebs.eventmanager.service.InvitationService;
 import com.sgebs.eventmanager.service.UserService;
 import com.sgebs.eventmanager.web.rest.util.HeaderUtil;
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -117,9 +121,8 @@ public class InvitationResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Invitation> getAllInvitations() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.debug("REST request to get all Invitations visibile by user [{}] (created)", auth.getName());
-        return invitationService.findCreatedByUserLogin(auth.getName());
+        log.debug("REST request to get all Invitations visibile by user [{}] (created)", SecurityUtils.getCurrentUserLogin());
+        return invitationService.findCreatedByUserLogin(SecurityUtils.getCurrentUserLogin());
     }
 
     @RequestMapping(value = "/homeinvitations",
@@ -127,9 +130,21 @@ public class InvitationResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Invitation> getHomeInvitations() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.debug("REST request to get all Invitations addressed to user [{}] (invited) and not accepted", auth.getName());
-        return invitationService.findForUserLoginNotAccepted(auth.getName());
+        log.debug("REST request to get all Invitations addressed to user [{}] (invited) and not accepted", SecurityUtils.getCurrentUserLogin());
+        return invitationService.findForUserLoginNotAccepted(SecurityUtils.getCurrentUserLogin());
+    }
+
+    @RequestMapping(value = "/acceptedinvitations/{yearWithMonth}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Invitation> getAcceptedInvitations(@PathVariable @DateTimeFormat(pattern="yyyy-MM") LocalDate yearWithMonth) {
+        // Get ast day of the month
+        LocalDate endOfM = yearWithMonth.dayOfMonth().withMaximumValue();
+        ZonedDateTime firstDate = ZonedDateTime.ofInstant(yearWithMonth.toDate().toInstant(), ZoneId.systemDefault());
+        ZonedDateTime secondDate = ZonedDateTime.ofInstant(endOfM.toDate().toInstant(), ZoneId.systemDefault());
+        log.debug("REST request to get all accepted Invitations addressed to user [{}]", SecurityUtils.getCurrentUserLogin());
+        return invitationService.findAllAcceptedByDateBetweenForUserLogin(SecurityUtils.getCurrentUserLogin(), firstDate, secondDate);
     }
 
     /**

@@ -1,32 +1,7 @@
 'use strict';
 
 angular.module('eventmanagerApp')
-    .controller('CalendarController', function ($scope, $state, $compile, $log, uiCalendarConfig,HomeInvitation) {
-
-        /* event source that calls a function on every view switch */
-        $scope.invitationsHome = [];
-
-
-
-        function getInvitationsToAccept() {
-
-
-            HomeInvitation.query(function(result) {
-                $scope.invitationsHome = result;
-                console.log(result);
-
-            });
-
-        }
-        getInvitationsToAccept();
-        console.log($scope.invitationsHome);
-        
-
-
-
-
-
-
+    .controller('CalendarController', function ($scope, $filter, $state, $compile, $log, uiCalendarConfig, DateUtils, CalendarService) {
 
         $scope.eventSource = function getEvents(start, end, timezone, callback) {
             // start and end are for displayed calendar, so see if end is in current month before subtracting a month
@@ -36,46 +11,35 @@ angular.module('eventmanagerApp')
                 date = end.subtract({months: 1});
             }
             date = date.format('YYYY-MM');
-            $log.info("Fetching data forasfasf: " + date);
+            $log.info("Fetching data for this date: " + date);
             $scope.events = [];
 
+            CalendarService.query({month: date}, function (data) {
 
-            var i;
+                data.forEach(function (invitation) {
 
-            console.log($scope.invitationsHome);
+                    invitation.event.date = $filter('date')(invitation.event.date, "dd-MM-yyyy hh:mm");
+                    invitation.date = $filter('date')(invitation.date, "dd-MM-yyyy hh:mm");
 
-            // for(i=0; i<$scope.invitationsHome.length;i++)
-            //     $scope.events.push({
-            //         id: $scope.invitationsHome[i].id,
-            //         title: $scope.invitationsHome[i].event.name,
-            //         tooltip: 'Exercise: ',
-            //         type: 'points',
-            //         start: '2016-04-04',
-            //         allDay: true,
-            //         className: ['label label-primary']
-            //
-            //     });
+                    // vezi conversia asta de data...
+                    var evtDate = '2016-04-25 15:00';
 
-
+                    $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " " + invitation.date);
 
                     $scope.events.push({
-                        id: '4',
-                        title: ' Points',
-                        tooltip: 'Exercise: ',
+                        id: invitation.id,
+                        title: invitation.event.name,
+                        tooltip: invitation.event.location,
                         type: 'points',
-                        start: '2016-04-04',
-                        allDay: true,
+                        start: evtDate,
+                        allDay: false,
                         className: ['label label-primary']
-
                     });
+                });
 
-
-
-            callback($scope.events);
-
-
-
-
+                $log.info(JSON.stringify($scope.events));
+                callback($scope.events);
+            });
         };
 
         $scope.onEventClick = function (date, jsEvent, view) {
