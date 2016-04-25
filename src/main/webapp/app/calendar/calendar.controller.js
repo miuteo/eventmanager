@@ -17,24 +17,20 @@ angular.module('eventmanagerApp')
             CalendarService.query({month: date}, function (data) {
 
                 data.forEach(function (invitation) {
-
-                    invitation.event.date = $filter('date')(invitation.event.date, "dd-MM-yyyy hh:mm");
+                    console.log("invitation.event.date->"+invitation.event.date);
+                    // invitation.event.date = $filter('date')(invitation.event.date, "dd-MM-yyyy hh:mm");
                     invitation.date = $filter('date')(invitation.date, "dd-MM-yyyy hh:mm");
 
-                    // vezi conversia asta de data...
-                    var evtDate = new Date(invitation.event.date);
 
-                    console.log(evtDate+"daaaaaaaaaaaaaaaaaaaaattttttttttaaaaaaa");
-                    Date.prototype.yyyymmdd = function() {
-                        var yyyy = this.getFullYear().toString();
-                        var dd = (this.getMonth()+1).toString(); // getMonth() is zero-based
-                        var mm  = this.getDate().toString();
-                        var hh = this.getHours();
-                        var minutes = this.getMinutes();
-                        return yyyy+"-" + (mm[1]?mm:"0"+mm[0]) +"-"+ (dd[1]?dd:"0"+dd[0])+ " "+hh+":"+"00"; // padding
-                    };
-                    console.log("invitation.event.date->"+evtDate.yyyymmdd());
-
+                   // function  yyyymmdd (invitationStart) {
+                   //      // 25-04-2016 06:28 -> "yyyy-mm-dd hh:mm"
+                   //      var dateHour = invitationStart.split(" ");
+                   //      var date = dateHour[0].split("-");
+                   //
+                   //      return date[2]+"-" + date[1] +"-"+ date[0]+ " "+dateHour[1]; // padding
+                   //  };
+                    console.log("invitation.event.date->"+invitation.event.date);
+                    // console.log("invitation.event.date2->"+yyyymmdd(invitation.event.date));
 
                     $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " " + invitation.date);
 
@@ -44,7 +40,7 @@ angular.module('eventmanagerApp')
                         title: invitation.event.name,
                         tooltip: invitation.event.location,
                         type: 'point',
-                        start: evtDate.yyyymmdd(),
+                        start:invitation.event.date,
                         allDay: false,
                         className: ['label label-primary']
                     });
