@@ -22,16 +22,29 @@ angular.module('eventmanagerApp')
                     invitation.date = $filter('date')(invitation.date, "dd-MM-yyyy hh:mm");
 
                     // vezi conversia asta de data...
-                    var evtDate = '2016-04-25 15:00';
+                    var evtDate = new Date(invitation.event.date);
+
+                    console.log(evtDate+"daaaaaaaaaaaaaaaaaaaaattttttttttaaaaaaa");
+                    Date.prototype.yyyymmdd = function() {
+                        var yyyy = this.getFullYear().toString();
+                        var dd = (this.getMonth()+1).toString(); // getMonth() is zero-based
+                        var mm  = this.getDate().toString();
+                        var hh = this.getHours();
+                        var minutes = this.getMinutes();
+                        return yyyy+"-" + (mm[1]?mm:"0"+mm[0]) +"-"+ (dd[1]?dd:"0"+dd[0])+ " "+hh+":"+"00"; // padding
+                    };
+                    console.log("invitation.event.date->"+evtDate.yyyymmdd());
+
 
                     $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " " + invitation.date);
+
 
                     $scope.events.push({
                         id: invitation.id,
                         title: invitation.event.name,
                         tooltip: invitation.event.location,
-                        type: 'points',
-                        start: evtDate,
+                        type: 'point',
+                        start: evtDate.yyyymmdd(),
                         allDay: false,
                         className: ['label label-primary']
                     });
