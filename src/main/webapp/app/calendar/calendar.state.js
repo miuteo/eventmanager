@@ -8,16 +8,16 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('home', {
+        $stateProvider.state('calendar', {
             parent: 'app',
-            url: '/',
+            url: '/calendar',
             data: {
-                authorities: []
+                roles: ['ROLE_USER']
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/home/home.html',
-                    controller: 'HomeController',
+                    templateUrl: 'app/calendar/calendar.html',
+                    controller: 'CalendarController',
                     controllerAs: 'vm'
                 }
             },
@@ -27,6 +27,6 @@
                     return $translate.refresh();
                 }]
             }
-        });
+        })
     }
 })();
