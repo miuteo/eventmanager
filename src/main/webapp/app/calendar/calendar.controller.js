@@ -42,7 +42,7 @@ angular.module('eventmanagerApp')
                         type: 'point',
                         start:invitation.event.date,
                         allDay: false,
-                        className: ['label label-primary']
+                        className: ['label label-success']
                     });
                 });
 
@@ -70,11 +70,18 @@ angular.module('eventmanagerApp')
         /* Render Tooltip */
         $scope.eventRender = function (event, element, view) {
             var tooltip = (event.tooltip) ? event.tooltip : event.title;
-            element.attr({
-                'tooltip': tooltip,
-                'tooltip-append-to-body': true
+
+            // element.attr({
+            //     'tooltip': tooltip,
+            //     'tooltip-append-to-body': true
+            // });
+            // $compile(element)($scope);
+
+            element.qtip({
+                content: tooltip
             });
-            $compile(element)($scope);
+
+
         };
 
         /* config object */

@@ -123,3 +123,5 @@ app.controller('MyController', ['$scope', function($scope) {
         unwatch();
     });
 }]);
+require('./ui-bootstrap-tpls.js');
+module.exports = 'ui.bootstrap';

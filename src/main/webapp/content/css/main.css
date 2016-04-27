@@ -263,6 +263,21 @@ ul#strengthBar {
 .uib-datepicker-popup  > li > div.uib-datepicker > table:focus{
     outline: none;
 }
+
+
+
+.fc-event.label-primary {
+    background-color: #009688;
+}
+
+.fc-event.label-info {
+    background-color: #03a9f4;
+}
+
+.fc-event.label-success {
+    background-color: #4caf50;
+}
+
 /* end of ui bootstrap tweaks */
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
