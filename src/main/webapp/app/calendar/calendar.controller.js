@@ -38,7 +38,8 @@ angular.module('eventmanagerApp')
                     $scope.events.push({
                         id: invitation.id,
                         title: invitation.event.name,
-                        tooltip: invitation.event.location,
+                        tooltipLocation: invitation.event.location,
+                        tooltipDetail: invitation.event.details,
                         type: 'point',
                         start:invitation.event.date,
                         allDay: false,
@@ -69,7 +70,7 @@ angular.module('eventmanagerApp')
 
         /* Render Tooltip */
         $scope.eventRender = function (event, element, view) {
-            var tooltip = (event.tooltip) ? event.tooltip : event.title;
+            // var tooltip = (event.tooltip) ? event.tooltip : event.title;
 
             // element.attr({
             //     'tooltip': tooltip,
@@ -78,7 +79,25 @@ angular.module('eventmanagerApp')
             // $compile(element)($scope);
 
             element.qtip({
-                content: tooltip
+                content: {
+                    title: event.tooltipLocation,
+                    text: event.tooltipDetail
+                },
+                // position: {
+                //     target: 'mouse', // Track the mouse as the positioning target
+                //     adjust: { x: 5, y: 5 } // Offset it slightly from under the mouse
+                // },
+                show: {
+                    effect: function() {
+                        $(this).show('slide', 500);
+                    }
+                },
+                hide: {
+                    effect: function() {
+                        $(this).hide('puff', 500);
+                    }
+                },
+                style: { classes: 'qtip-default  qtip qtip-green qtip-rounded' }
             });
 
 
