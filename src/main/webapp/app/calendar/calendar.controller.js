@@ -40,7 +40,7 @@ angular.module('eventmanagerApp')
                         title: invitation.event.name,
                         tooltipLocation: invitation.event.location,
                         tooltipDetail: invitation.event.details,
-                        type: 'point',
+                        type: 'events',
                         start:invitation.event.date,
                         allDay: false,
                         className: ['label label-success']
@@ -53,7 +53,7 @@ angular.module('eventmanagerApp')
         };
 
         $scope.onEventClick = function (date, jsEvent, view) {
-            $state.go('history.' + date.type, {id: date.id});
+            $state.go('#/invitation/' +date.id+'/edit');
         };
 
         /* Change View */
