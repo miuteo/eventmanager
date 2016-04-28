@@ -53,7 +53,7 @@ angular.module('eventmanagerApp')
         };
 
         $scope.onEventClick = function (date, jsEvent, view) {
-            $state.go('#/invitation/' +date.id+'/edit');
+            $state.go('calendar-detail' ,{id: date.id});
         };
 
         /* Change View */
@@ -97,6 +97,8 @@ angular.module('eventmanagerApp')
                         $(this).hide('puff', 500);
                     }
                 },
+
+
                 style: { classes: 'qtip-default  qtip qtip-green qtip-rounded' }
             });
 
