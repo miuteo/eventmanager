@@ -37,7 +37,18 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
     mail:
-        host: localhost
+        host: smtp.gmail.com
+        port: 587
+        username: system.eventmanager@gmail.com
+        password: rootroot
+        protocol: smtp
+        tls: true
+        auth: true
+        from: system.eventmanager@gmail.com
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     messages:
         cache-seconds: 1
     thymeleaf:
@@ -47,7 +58,7 @@ liquibase:
     contexts: dev
 
 server:
-    port: 12080
+    port: 80
 
 # ===================================================================
 # JHipster specific properties
