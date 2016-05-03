@@ -2,25 +2,30 @@
     "eventmanagerApp": {
         "invitation" : {
             "home": {
-                "title": "Invitations",
-                "createLabel": "Crează o nouă Invitation",
-                "createOrEditLabel": "Crează sau editează o Invitation",
-                "search": "Search for Invitation"
+                "title": "Invitații",
+                "createLabel": "Crează o nouă invitație",
+                "createOrEditLabel": "Crează sau editează o invitație",
+                "search": "Caută o invitație"
             },
-            "created": "O nouă Invitation este creată cu identificatorul {{ param }}",
-            "updated": "O Invitation este editată cu identificatorul {{ param }}",
-            "deleted": "O Invitation este stearsă cu identificatorul {{ param }}",
+            "response": {
+                "accept": "Ați acceptat invitatia la {{ param }} cu succes!",
+                "reject": "Ați refuzat invitația la {{ param }} cu succes!",
+                "maybe": "Puteți raspunde mai tarziu la {{ param }},acest eveniment va aparea în continuare în News Feed."
+            },
+            "created": "O nouă invitație este creată cu identificatorul {{ param }}",
+            "updated": "O  nouă invitație este editată cu identificatorul {{ param }}",
+            "deleted": "O  nouă invitație este stearsă cu identificatorul {{ param }}",
             "delete": {
-                "question": "Ești sigur că dorești să stergi Invitation {{ id }}?"
+                "question": "Ești sigur că dorești să stergi invitația {{ id }}?"
             },
             "detail": {
-                "title": "Invitation"
+                "title": "Invitație"
             },
-            "date": "Date",
-            "accept": "Accept",
-            "event": "Event",
-            "user": "User",
-            "createdBy": "CreatedBy"
+            "date": "Data",
+            "accept": "Acceptat",
+            "event": "Eveniment",
+            "user": "Utilizator",
+            "createdBy": "Creat de"
         }
     }
 }

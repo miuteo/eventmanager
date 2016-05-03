@@ -5,9 +5,9 @@
         .module('eventmanagerApp')
         .controller('HomeInvitationsController', HomeInvitationsController);
 
-    HomeInvitationsController.$inject = ['$scope', 'Principal', 'LoginService', 'HomeInvitation', '$http', '$q'];
+    HomeInvitationsController.$inject = ['$scope', 'Principal', 'LoginService', 'HomeInvitation', '$http', '$q','AlertService'];
 
-    function HomeInvitationsController ($scope, Principal, LoginService, HomeInvitation, $http, $q) {
+    function HomeInvitationsController ($scope, Principal, LoginService, HomeInvitation, $http, $q,AlertService) {
 
         var vm = this;
 

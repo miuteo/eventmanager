@@ -16,7 +16,7 @@ public class UserDTO {
     public static final int PASSWORD_MIN_LENGTH = 4;
     public static final int PASSWORD_MAX_LENGTH = 100;
 
-    @Pattern(regexp = "^[a-z0-9]*$")
+    @Pattern(regexp = "^[a-z0-9]*[.]?[a-z0-9]+$")
     @NotNull
     @Size(min = 1, max = 50)
     private String login;

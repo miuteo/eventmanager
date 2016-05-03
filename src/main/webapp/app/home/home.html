@@ -6,7 +6,7 @@
             <jhi-alert></jhi-alert>
             <p class="lead" translate="home.subtitle">Here are your invitations</p>
             <div ng-controller="HomeInvitationsController">
-                <div ng-repeat="invitation in invitationsHome track by invitation.id" class="alert alert-success">
+                <div ng-repeat="invitation in invitationsHome track by invitation.id" class="alert alert-info">
                     <h2>{{ invitation.event.name }}</h2>
                     <small>Event date {{invitation.event.date | date: 'short'}} created by {{invitation.event.createdBy.login}} at location {{ invitation.event.location }} </small>
                     <div ng-bind-html="invitation.event.details"></div>
