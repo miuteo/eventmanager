@@ -7,6 +7,11 @@
                 "createOrEditLabel": "Create or edit a Invitation",
                 "search": "Search for Invitation"
             },
+            "response": {
+                "accept": "You have accepted invitation to {{ param }} successfully",
+                "reject": "You have rejected invitation to {{ param }} successfully",
+                "maybe": "You can respond later to {{ param }},this event will apear to your newsfeed."
+            },
             "created": "A new Invitation is created with identifier {{ param }}",
             "updated": "A Invitation is updated with identifier {{ param }}",
             "deleted": "A Invitation is deleted with identifier {{ param }}",

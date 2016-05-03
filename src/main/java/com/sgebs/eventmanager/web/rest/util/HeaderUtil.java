@@ -22,6 +22,9 @@ public class HeaderUtil {
     public static HttpHeaders createEntityUpdateAlert(String entityName, String param) {
         return createAlert("eventmanagerApp." + entityName + ".updated", param);
     }
+    public static HttpHeaders createEntityUpdateWithActionAlert(String entityName,String action, String param) {
+        return createAlert("eventmanagerApp." + entityName + "." + action, param);
+    }
 
     public static HttpHeaders createEntityDeletionAlert(String entityName, String param) {
         return createAlert("eventmanagerApp." + entityName + ".deleted", param);

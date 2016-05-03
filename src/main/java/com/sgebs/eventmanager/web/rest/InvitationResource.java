@@ -102,10 +102,21 @@ public class InvitationResource {
         log.debug("REST request to accept Invitation : {}", invitation);
         if (invitation.getId() != null) {
             Invitation existingInvitation =  invitationService.findOne(invitation.getId());
+
+            String action= null;
+            Boolean isAccept = invitation.isAccept();
+            if(isAccept == null) {
+                action = "maybe";
+            }else if(isAccept){
+                action = "accept";
+            }else{
+                action = "reject";
+            }
             existingInvitation.setAccept(invitation.isAccept());
             Invitation result = invitationService.save(existingInvitation);
+
             return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("invitation", invitation.getId().toString()))
+                .headers(HeaderUtil.createEntityUpdateWithActionAlert("invitation.response",action ,existingInvitation.getEvent().getName()))
                 .body(result);
         }
         return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation", "idexists", "You cannot accept an invitation that does not exist")).body(null);

@@ -1,6 +1,7 @@
 
 <div>
     <div ng-controller="HomeInvitationsController">
+        <jhi-alert></jhi-alert>
     <h2><span translate="eventmanagerApp.invitation.detail.title">Invitation</span> {{vm.invitation.id}}</h2>
     <hr>
     <dl class="dl-horizontal">
@@ -48,8 +49,6 @@
     <script>
         $(document).ready(function(){
             setTimeout(function(){
-
-                //YOUR CODE
                 $(".qtip").remove();
 
             },100);

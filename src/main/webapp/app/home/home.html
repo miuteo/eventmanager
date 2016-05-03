@@ -1,7 +1,9 @@
+
 <div ng-cloak>
     <div class="row">
         <div class="col-md-8">
             <h1 translate="home.title">Welcome to Event Manager!</h1>
+            <jhi-alert></jhi-alert>
             <p class="lead" translate="home.subtitle">Here are your invitations</p>
             <div ng-controller="HomeInvitationsController">
                 <div ng-repeat="invitation in invitationsHome track by invitation.id" class="alert alert-success">
