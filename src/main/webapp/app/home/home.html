@@ -2,8 +2,8 @@
 <div ng-cloak>
     <div class="row">
         <div class="col-md-8">
-            <h1 translate="home.title">Welcome to Event Manager!</h1>
             <jhi-alert></jhi-alert>
+            <h1 translate="home.title">Welcome to Event Manager!</h1>
             <p class="lead" translate="home.subtitle">Here are your invitations</p>
             <div ng-controller="HomeInvitationsController">
                 <div ng-repeat="invitation in invitationsHome track by invitation.id" class="alert alert-info">
@@ -13,11 +13,11 @@
                     <div class="btn-group" style="margin-top: 10px">
                         <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:true})"
                                 class="btn btn-success">
-                                <span class="glyphicon glyphicon-ok-circle"></span>&nbsp;<span>Accept</span>
+                                <span class="glyphicon glyphicon-ok-circle"></span>&nbsp;<span translate="home.accept">Accept</span>
                         </button>
                         <button ng-click="acceptOrRejectInvitation({id:invitation.id, accept:false})"
                                 class="btn btn-danger">
-                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Reject</span>
+                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="home.reject">Reject</span>
                         </button>
                     </div>
                 </div>
