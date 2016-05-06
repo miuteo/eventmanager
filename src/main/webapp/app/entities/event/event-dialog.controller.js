@@ -5,12 +5,14 @@
         .module('eventmanagerApp')
         .controller('EventDialogController', EventDialogController);
 
-    EventDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Invitation', 'User'];
+    EventDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Event', 'Invitation', 'User','Location'];
 
-    function EventDialogController ($scope, $stateParams, $uibModalInstance, $q, entity, Event, Invitation, User) {
+    function EventDialogController ($scope, $stateParams, $uibModalInstance, $q, entity, Event, Invitation, User,Location) {
         var vm = this;
         vm.event = entity;
         vm.invitations = Invitation.query();
+        vm.locations = Location.query();
+        // console.log(vm.locations);
         vm.users = User.query();
         vm.load = function(id) {
             Event.get({id : id}, function(result) {

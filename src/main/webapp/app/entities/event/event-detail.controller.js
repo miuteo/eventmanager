@@ -5,9 +5,9 @@
         .module('eventmanagerApp')
         .controller('EventDetailController', EventDetailController);
 
-    EventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Event', 'Invitation', 'User'];
+    EventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Event', 'Invitation', 'User','Location'];
 
-    function EventDetailController($scope, $rootScope, $stateParams, entity, Event, Invitation, User) {
+    function EventDetailController($scope, $rootScope, $stateParams, entity, Event, Invitation, User, Location) {
         var vm = this;
         vm.event = entity;
         vm.load = function (id) {

@@ -1,0 +1,64 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocationLabel" translate="eventmanagerApp.location.home.createOrEditLabel">Create or edit a Location</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="false">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.location.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="eventmanagerApp.location.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.location.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="eventmanagerApp.location.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.location.address"
+                     />
+        </div>
+        <div class="form-group" ng-show="false">
+            <label class="control-label" translate="eventmanagerApp.location.date_created" for="field_date_created">Date_created</label>
+                <div class="input-group">
+                    <input id="field_date_created" type="text" class="form-control" name="date_created" datetime-picker="{{dateformat}}" ng-model="vm.location.date_created" is-open="vm.datePickerOpenStatus.date_created"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date_created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group" ng-show="false">
+            <label class="control-label" translate="eventmanagerApp.location.last_updated" for="field_last_updated">Last_updated</label>
+                <div class="input-group">
+                    <input id="field_last_updated" type="text" class="form-control" name="last_updated" datetime-picker="{{dateformat}}" ng-model="vm.location.last_updated" is-open="vm.datePickerOpenStatus.last_updated"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('last_updated')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group" ng-show="false">
+            <label translate="eventmanagerApp.location.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.location.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

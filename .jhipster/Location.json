@@ -1,0 +1,34 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "last_updated",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20160505093744",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "location",
+    "pagination": "infinite-scroll"
+}

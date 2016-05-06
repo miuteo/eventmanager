@@ -91,7 +91,6 @@ public class EventResourceIntTest {
         event = new Event();
         event.setName(DEFAULT_NAME);
         event.setDate(DEFAULT_DATE);
-        event.setLocation(DEFAULT_LOCATION);
         event.setDetails(DEFAULT_DETAILS);
     }
 
@@ -227,7 +226,6 @@ public class EventResourceIntTest {
         updatedEvent.setId(event.getId());
         updatedEvent.setName(UPDATED_NAME);
         updatedEvent.setDate(UPDATED_DATE);
-        updatedEvent.setLocation(UPDATED_LOCATION);
         updatedEvent.setDetails(UPDATED_DETAILS);
 
         restEventMockMvc.perform(put("/api/events")

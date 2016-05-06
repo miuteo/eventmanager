@@ -32,7 +32,9 @@
                     <td><a ui-sref="event-detail({id:event.id})">{{event.id}}</a></td>
                     <td>{{event.name}}</td>
                     <td>{{event.date | date:'medium'}}</td>
-                    <td>{{event.location}}</td>
+                    <td>
+                        <a ui-sref="location-detail({id:event.location.id})">{{event.location.name}}</a>
+                    </td>
                     <td>{{event.details}}</td>
                     <td>
                         {{event.createdBy.login}}

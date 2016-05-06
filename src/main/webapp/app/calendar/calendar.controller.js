@@ -38,7 +38,7 @@ angular.module('eventmanagerApp')
                     $scope.events.push({
                         id: invitation.id,
                         title: invitation.event.name,
-                        tooltipLocation: invitation.event.location,
+                        tooltipLocation: invitation.event.location.name,
                         tooltipDetail: invitation.event.details,
                         type: 'events',
                         start:invitation.event.date,

@@ -31,9 +31,9 @@ public class Event implements Serializable {
     @Column(name = "date", nullable = false)
     private ZonedDateTime date;
 
-    @NotNull
-    @Column(name = "location", nullable = false)
-    private String location;
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     @Column(name = "details")
     private String details;
@@ -70,11 +70,11 @@ public class Event implements Serializable {
         this.date = date;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -128,7 +128,6 @@ public class Event implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", date='" + date + "'" +
-            ", location='" + location + "'" +
             ", details='" + details + "'" +
             '}';
     }

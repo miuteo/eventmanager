@@ -12,6 +12,12 @@
             "relationshipType": "one-to-one",
             "otherEntityField": "login",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
         }
     ],
     "fields": [
@@ -25,13 +31,6 @@
         {
             "fieldName": "date",
             "fieldType": "ZonedDateTime",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "location",
-            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
