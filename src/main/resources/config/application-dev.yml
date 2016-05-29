@@ -58,7 +58,7 @@ liquibase:
     contexts: dev
 
 server:
-    port: 12080
+    port: 8080
 
 # ===================================================================
 # JHipster specific properties
