@@ -32,8 +32,12 @@ angular.module('eventmanagerApp')
                     console.log("invitation.event.date->"+invitation.event.date);
                     // console.log("invitation.event.date2->"+yyyymmdd(invitation.event.date));
 
-                    $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " " + invitation.date);
+                    $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " "+invitation.event.duration + " " + invitation.date);
 
+                    var msec = Date.parse(invitation.event.date);
+                    var msecEnd = msec + invitation.event.duration * 60*60*1000;
+                    var dateEnd = new Date(msecEnd);
+                    $log.info ("dateEnd="+dateEnd);
 
                     $scope.events.push({
                         id: invitation.id,
@@ -42,6 +46,7 @@ angular.module('eventmanagerApp')
                         tooltipDetail: invitation.event.details,
                         type: 'events',
                         start:invitation.event.date,
+                        end: dateEnd,
                         allDay: false,
                         className: ['label label-success']
                     });
