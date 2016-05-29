@@ -18,6 +18,7 @@
             },
             "name": "Nume",
             "date": "Dată",
+            "duration": "Durată (ore)",
             "location": "Locațion",
             "details": "Detalii",
             "invitation": "Invitație",

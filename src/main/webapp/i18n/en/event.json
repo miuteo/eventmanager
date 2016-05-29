@@ -18,6 +18,7 @@
             },
             "name": "Name",
             "date": "Date",
+            "duration": "Duration (hours)",
             "location": "Location",
             "details": "Details",
             "invitation": "Invitation",

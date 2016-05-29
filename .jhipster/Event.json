@@ -36,6 +36,17 @@
             ]
         },
         {
+            "fieldName": "duration",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "0",
+            "fieldValidateRulesMax": "8"
+        } ,
+        {
             "fieldName": "details",
             "fieldType": "String"
         }

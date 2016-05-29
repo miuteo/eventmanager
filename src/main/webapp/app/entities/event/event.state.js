@@ -73,6 +73,7 @@
                             return {
                                 name: null,
                                 date: null,
+                                duration: null,
                                 location: null,
                                 details: null,
                                 id: null

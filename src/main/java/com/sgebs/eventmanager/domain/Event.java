@@ -31,6 +31,12 @@ public class Event implements Serializable {
     @Column(name = "date", nullable = false)
     private ZonedDateTime date;
 
+    @NotNull
+    @Min(value = 0)
+    @Max(value = 8)
+    @Column(name = "duration", nullable = false)
+    private Float duration;
+
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
@@ -102,6 +108,12 @@ public class Event implements Serializable {
         this.createdBy = user;
     }
 
+    public Float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Float duration) { this.duration = duration; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -128,6 +140,7 @@ public class Event implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", date='" + date + "'" +
+            ", duration='" + duration + "'" +
             ", details='" + details + "'" +
             '}';
     }

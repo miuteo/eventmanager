@@ -45,6 +45,32 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" translate="eventmanagerApp.event.duration" for="field_duration">Duration</label>
+            <input type="number" class="form-control" name="duration" id="field_duration"
+                   ng-model="vm.event.duration"
+                   required min="0" max="8" />
+            <div ng-show="editForm.duration.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.duration.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.duration.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.duration.$error.max" translate="entity.validation.max" translate-value-max="8">
+                    This field cannot be more than 8.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.duration.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+
         <!--<div class="form-group">-->
             <!--<label class="control-label" translate="eventmanagerApp.event.location" for="field_location">Location</label>-->
             <!--<input type="text" class="form-control" name="location" id="field_location"-->

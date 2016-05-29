@@ -21,6 +21,7 @@
                     <th><span translate="global.field.id">ID</span></th>
                     <th><span translate="eventmanagerApp.event.name">Name</span></th>
                     <th><span translate="eventmanagerApp.event.date">Date</span></th>
+                    <th><span translate="eventmanagerApp.event.duration">Duration</span></th>
                     <th><span translate="eventmanagerApp.event.location">Location</span></th>
                     <th><span translate="eventmanagerApp.event.details">Details</span></th>
                     <th><span translate="eventmanagerApp.event.createdBy">createdBy</span></th>
@@ -32,6 +33,7 @@
                     <td><a ui-sref="event-detail({id:event.id})">{{event.id}}</a></td>
                     <td>{{event.name}}</td>
                     <td>{{event.date | date:'medium'}}</td>
+                    <td>{{event.duration}}</td>
                     <td>
                         <a ui-sref="location-detail({id:event.location.id})">{{event.location.name}}</a>
                     </td>
