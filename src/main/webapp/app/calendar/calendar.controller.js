@@ -35,9 +35,11 @@ angular.module('eventmanagerApp')
                     $log.info(invitation.event.name + " " + invitation.event.location + " " + invitation.event.date + " "+invitation.event.duration + " " + invitation.date);
 
                     var msec = Date.parse(invitation.event.date);
-                    var msecEnd = msec + invitation.event.duration * 60*60*1000;
+                    var msec2 = msec;
+                    invitation.event.date = new Date(Date.parse(invitation.event.date));
+                    var msecEnd = msec + invitation.event.duration*60*60*1000;
                     var dateEnd = new Date(msecEnd);
-                    $log.info ("dateEnd="+dateEnd);
+
 
                     $scope.events.push({
                         id: invitation.id,

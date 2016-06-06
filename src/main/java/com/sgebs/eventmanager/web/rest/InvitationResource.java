@@ -1,8 +1,12 @@
 package com.sgebs.eventmanager.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.collect.Iterables;
+import com.sgebs.eventmanager.domain.Event;
 import com.sgebs.eventmanager.domain.Invitation;
+import com.sgebs.eventmanager.repository.EventRepository;
 import com.sgebs.eventmanager.security.SecurityUtils;
+import com.sgebs.eventmanager.service.EventService;
 import com.sgebs.eventmanager.service.InvitationService;
 import com.sgebs.eventmanager.service.UserService;
 import com.sgebs.eventmanager.web.rest.util.HeaderUtil;
@@ -40,6 +44,10 @@ public class InvitationResource {
 
     @Inject
     private UserService userService;
+
+
+
+    private List<Invitation> allAcceptedInvitations;
 
     /**
      * POST  /invitations : Create a new invitation.
@@ -105,10 +113,21 @@ public class InvitationResource {
 
             String action= null;
             Boolean isAccept = invitation.isAccept();
+
             if(isAccept == null) {
                 action = "maybe";
             }else if(isAccept){
                 action = "accept";
+                Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                String login = auth.getName();
+                Event currentEvent = existingInvitation.getEvent();
+                allAcceptedInvitations = invitationService.findAllAcceptedForUserLogin(login);
+                for(Invitation acceptedInvitation:allAcceptedInvitations){
+                    Event acceptedEvent = acceptedInvitation.getEvent();
+                    if(acceptedEvent.isIntersect(currentEvent))
+                        return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation.response", action, "You cannot accept an invitation that intersect with another.")).body(null);
+
+                }
             }else{
                 action = "reject";
             }

@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,9 @@ public class EventResource {
     @Inject
     private UserService userService;
 
+
+    private List<Event> allEvents;
+
     /**
      * POST  /events : Create a new event.
      *
@@ -55,6 +59,25 @@ public class EventResource {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName();
         event.setCreatedBy(userService.getUserByLogin(login));
+        ZonedDateTime startDate =  event.getDate();
+        ZonedDateTime endDate  = event.getEndDate();
+
+        allEvents = eventService.findAll();
+        for(Event currentEvent:allEvents){
+            ZonedDateTime currentStartDate =  currentEvent.getDate();
+            ZonedDateTime currentEndDate = currentEvent.getEndDate();
+            if(currentEvent.getLocation().getId() == event.getLocation().getId()
+                &&
+//                ((startDate.isAfter(currentStartDate) && startDate.isBefore(currentEndDate) ||
+//                    (endDate.isAfter(currentStartDate) && endDate.isBefore(currentEndDate)) ||
+//                    (startDate.isBefore(currentStartDate) && endDate.isAfter(currentEndDate))))
+                event.isIntersect(currentEvent)
+                ){
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("event", "locationbusy", "The current location is busy between selected range.")).body(null);
+
+            }
+
+        }
 
 
         log.debug(auth.toString());

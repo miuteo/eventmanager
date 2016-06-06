@@ -114,6 +114,31 @@ public class Event implements Serializable {
 
     public void setDuration(Float duration) { this.duration = duration; }
 
+    public  ZonedDateTime getEndDate(){
+        long minutes;
+        long duration = Math.round(getDuration() *100.0);
+        Long durationH = duration/100;
+        Long durationM = duration%100;
+        minutes = durationH * 60 + durationM * 60 / 100;
+
+        return date.plusMinutes(minutes);
+    }
+
+    public boolean isIntersect(Event anotherEvent){
+        ZonedDateTime anotherStartDate =  anotherEvent.getDate();
+        ZonedDateTime anotherEndDate =  anotherEvent.getEndDate();
+
+        ZonedDateTime startDate = this.date;
+        ZonedDateTime endDate  = this.getEndDate();
+
+        if(((startDate.isAfter(anotherStartDate) && startDate.isBefore(anotherEndDate) ||
+            (endDate.isAfter(anotherStartDate) && endDate.isBefore(anotherEndDate)) ||
+            (startDate.isBefore(anotherStartDate) && endDate.isAfter(anotherEndDate))))){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

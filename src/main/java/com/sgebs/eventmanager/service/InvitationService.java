@@ -70,6 +70,12 @@ public class InvitationService {
         List<Invitation> result = invitationRepository.findAllAcceptedByDateBetweenForUserLogin(login, firstDate, secondDate);
         return result;
     }
+    @Transactional(readOnly = true)
+    public List<Invitation> findAllAcceptedForUserLogin(String login) {
+        log.debug("Request to get all accepted Invitations for user [{}] ", login);
+        List<Invitation> result = invitationRepository.findAllAcceptedForUserLogin(login);
+        return result;
+    }
 
     @Transactional(readOnly = true)
     public List<Invitation> findCreatedByUserLogin(String login) {

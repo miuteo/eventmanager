@@ -21,4 +21,7 @@ public interface InvitationRepository extends JpaRepository<Invitation,Long> {
 
     @Query("select i from Invitation i where i.user.login = :login and i.accept is true and i.event.date between :firstDate and :secondDate")
     public List<Invitation> findAllAcceptedByDateBetweenForUserLogin(@Param("login") String login, @Param("firstDate") ZonedDateTime firstDate, @Param("secondDate") ZonedDateTime secondDate);
+
+    @Query("select i from Invitation i where i.user.login = :login and i.accept is true")
+    public List<Invitation> findAllAcceptedForUserLogin(@Param("login") String login);
 }
