@@ -10,7 +10,8 @@
             "response": {
                 "accept": "Ați acceptat invitatia la {{ param }} cu succes!",
                 "reject": "Ați refuzat invitația la {{ param }} cu succes!",
-                "maybe": "Puteți raspunde mai tarziu la {{ param }},acest eveniment va aparea în continuare în News Feed."
+                "maybe": "Puteți raspunde mai tarziu la {{ param }},acest eveniment va aparea în continuare în News Feed.",
+                "intersect" : "Evenimentul se intersectează cu un altul la care ați confirmat prezența deja."
             },
             "created": "O nouă invitație este creată cu identificatorul {{ param }}",
             "updated": "O  nouă invitație este editată cu identificatorul {{ param }}",

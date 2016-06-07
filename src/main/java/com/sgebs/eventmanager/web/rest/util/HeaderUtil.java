@@ -32,7 +32,7 @@ public class HeaderUtil {
 
     public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-eventmanagerApp-error", "error." + errorKey);
+        headers.add("X-eventmanagerApp-error",  errorKey);
         headers.add("X-eventmanagerApp-params", entityName);
         return headers;
     }

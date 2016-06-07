@@ -125,8 +125,7 @@ public class InvitationResource {
                 for(Invitation acceptedInvitation:allAcceptedInvitations){
                     Event acceptedEvent = acceptedInvitation.getEvent();
                     if(acceptedEvent.isIntersect(currentEvent))
-                        return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invitation.response", action, "You cannot accept an invitation that intersect with another.")).body(null);
-
+                        return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(currentEvent.getName(),"eventmanagerApp.invitation.response.intersect" ,"You cannot accept an invitation that intersect with another.")).body(null);
                 }
             }else{
                 action = "reject";

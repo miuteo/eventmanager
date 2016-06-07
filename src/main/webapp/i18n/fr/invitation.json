@@ -7,6 +7,12 @@
                 "createOrEditLabel": "Créer ou éditer un Invitation",
                 "search": "Recherche pour Invitation"
             },
+            "response": {
+                "accept": "Vous avez accepté votre invitation à {{param}} avec succès!",
+                "reject": "Vous avez refusé l'invitation à {{param}} avec succès!",
+                "maybe": "Vous pouvez répondre plus tard {{param}}, l'événement apparaîtra toujours dans Nouvelles RSS.",
+                "intersect" : "L'événement se croisent les uns aux autres où vous déjà confirmé."
+            },
             "created": "Un nouveau Invitation a été créé avec l'identifiant {{ param }}",
             "updated": "Le Invitation avec l'identifiant {{ param }} a été mis à jour",
             "deleted": "Le Invitation avec l'identifiant {{ param }} a été supprimé",

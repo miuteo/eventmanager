@@ -2,6 +2,8 @@
     "home": {
         "title": "Bienvenue chez Event Manager!",
         "subtitle": "Voici vos invitations",
+        "accept": "Accepter",
+        "reject": "Refus",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },
