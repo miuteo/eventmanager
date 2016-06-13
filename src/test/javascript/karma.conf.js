@@ -38,6 +38,10 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/angular-ui-calendar/src/calendar.js',
             'src/main/webapp/bower_components/angular-animate/angular-animate.js',
             'src/main/webapp/bower_components/AngularJS-Toaster/toaster.js',
+            'src/main/webapp/bower_components/ev-emitter/ev-emitter.js',
+            'src/main/webapp/bower_components/imagesloaded/imagesloaded.js',
+            'src/main/webapp/bower_components/qtip2/jquery.qtip.js',
+            'src/main/webapp/bower_components/qtip2/basic/jquery.qtip.js',
             'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'src/main/webapp/app/app.module.js',
